@@ -1,0 +1,1815 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"beacon-3.newrelic.com","errorBeacon":"bam.nr-data.net","licenseKey":"f2edcff25e","applicationID":"190034","transactionName":"dgwMEkpfWVsHERpFWUcIEUlLVVRFAQs=","queueTime":7,"applicationTime":252,"ttGuid":"","agentToken":null,"agent":"js-agent.newrelic.com/nr-411.min.js"}</script>
+<script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VQcCWV9RGwIJVFFRAw=="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({1:[function(t,e){function n(t,e,n){n||(n={});for(var r=o[t],a=r&&r.length||0,s=n[i]||(n[i]={}),u=0;a>u;u++)r[u].apply(s,e);return s}function r(t,e){var n=o[t]||(o[t]=[]);n.push(e)}var o={},i="nr@context";e.exports={on:r,emit:n}},{}],2:[function(t){function e(t,e,n,i,s){return u?u-=1:r("err",[s||new UncaughtException(t,e,n)]),"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(6),i=t(5),a=window.onerror,s=!1,u=0;t("loader").features.push("err"),window.onerror=e,NREUM.noticeError=n;try{throw new Error}catch(d){"stack"in d&&(t(1),t(2),"addEventListener"in window&&t(3),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&t(4),s=!0)}i.on("fn-start",function(){s&&(u+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&u>0&&(u-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:5,2:4,3:3,4:6,5:1,6:14,handle:"D5DuLP",loader:"G9z0Bl"}],3:[function(t){function e(t){r.inPlace(t,["addEventListener","removeEventListener"],"-",n)}function n(t){return t[1]}var r=t(1),o=(t(3),t(2));if(e(window),"getPrototypeOf"in Object){for(var i=document;i&&!i.hasOwnProperty("addEventListener");)i=Object.getPrototypeOf(i);i&&e(i);for(var a=XMLHttpRequest.prototype;a&&!a.hasOwnProperty("addEventListener");)a=Object.getPrototypeOf(a);a&&e(a)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&e(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=e["nr@wrapped"]?t[1]=e["nr@wrapped"]:e["nr@wrapped"]=t[1]=r(e,"fn-"):"function"==typeof e.handleEvent&&r.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:15,2:1,3:14}],4:[function(t){var e=(t(3),t(1)),n=t(2);e.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=e(t[0],"fn-")})},{1:15,2:1,3:14}],5:[function(t){function e(t){var e=t[0];"string"==typeof e&&(e=new Function(e)),t[0]=n(e,"fn-")}var n=(t(3),t(1)),r=t(2);n.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",e)},{1:15,2:1,3:14}],6:[function(t){function e(){o.inPlace(this,s,"fn-")}function n(t,e){o.inPlace(e,["onreadystatechange"],"fn-")}function r(t,e){return e}var o=t(1),i=t(2),a=window.XMLHttpRequest,s=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];window.XMLHttpRequest=function(t){var n=new a(t);try{i.emit("new-xhr",[],n),o.inPlace(n,["addEventListener","removeEventListener"],"-",function(t,e){return e}),n.addEventListener("readystatechange",e,!1)}catch(r){try{i.emit("internal-error",r)}catch(s){}}return n},window.XMLHttpRequest.prototype=a.prototype,o.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",r),i.on("send-xhr-start",n),i.on("open-xhr-start",n)},{1:15,2:1}],7:[function(t){function e(){function e(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function n(t){var n=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;u>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!n.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){n.status=t.status;var a=t.responseType,d="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,f=e(d);if(f&&(r.rxSize=f),this.sameOrigin){var c=t.getResponseHeader("X-NewRelic-App-Data");c&&(n.cat=c.split(", ").pop())}}else n.status=0;r.cbTime=this.cbTime,o("xhr",[n,r])}}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}t("loader").features.push("xhr");var o=t("handle"),i=t(1),a=t(5),s=["load","error","abort","timeout"],u=s.length,d=t(2);t(3),t(4),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=n,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,n){var r=this.metrics,o=t[0],i=this;if(r&&o){var d=e(o);d&&(r.txSize=d)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof n.onload))&&i.end(n)}catch(e){try{a.emit("internal-error",e)}catch(r){}}};for(var f=0;u>f;f++)n.addEventListener(s[f],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+d(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+d(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)&&e()},{1:8,2:11,3:3,4:6,5:1,handle:"D5DuLP",loader:"G9z0Bl"}],8:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],D5DuLP:[function(t,e){function n(t,e){var n=r[t];return n?n.apply(this,e):(o[t]||(o[t]=[]),void o[t].push(e))}var r={},o={};e.exports=n,n.queues=o,n.handlers=r},{}],11:[function(t,e){function n(t){if(!t||"object"!=typeof t&&"function"!=typeof t)return-1;if(t===window)return 0;if(o.call(t,"__nr"))return t.__nr;try{return Object.defineProperty(t,"__nr",{value:r,writable:!0,enumerable:!1}),r}catch(e){return t.__nr=r,r}finally{r+=1}}var r=1,o=Object.prototype.hasOwnProperty;e.exports=n},{}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],G9z0Bl:[function(t,e){function n(){var t=p.info=NREUM.info;if(t&&t.agent&&t.licenseKey&&t.applicationID&&u&&u.body){p.proto="https"===c.split(":")[0]||t.sslForHttp?"https://":"http://",a("mark",["onload",i()]);var e=u.createElement("script");e.src=p.proto+t.agent,u.body.appendChild(e)}}function r(){"complete"===u.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=window,u=s.document,d="addEventListener",f="attachEvent",c=(""+location).split("?")[0],p=e.exports={offset:i(),origin:c,features:[]};u[d]?(u[d]("DOMContentLoaded",o,!1),s[d]("load",n,!1)):(u[f]("onreadystatechange",r),s[f]("onload",n)),a("mark",["firstbyte",i()])},{handle:"D5DuLP"}],14:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],15:[function(t,e){function n(t,e,r,s){function nrWrapper(){try{var n,a=u(arguments),d=this,f=r&&r(a,d)||{}}catch(c){i([c,"",[a,d,s],f])}o(e+"start",[a,d,s],f);try{return n=t.apply(d,a)}catch(p){throw o(e+"err",[a,d,p],f),p}finally{o(e+"end",[a,d,n],f)}}return a(t)?t:(e||(e=""),nrWrapper[n.flag]=!0,nrWrapper)}function r(t,e,r,o){r||(r="");var i,s,u,d="-"===r.charAt(0);for(u=0;u<e.length;u++)s=e[u],i=t[s],a(i)||(t[s]=n(i,d?s+r:r,o,s,t))}function o(t,e,n){try{s.emit(t,e,n)}catch(r){i([r,t,e,n])}}function i(t){try{s.emit("internal-error",t)}catch(e){}}function a(t){return!(t&&"function"==typeof t&&t.apply&&!t[n.flag])}var s=t(1),u=t(2);e.exports=n,n.inPlace=r,n.flag="nr@wrapper"},{1:1,2:14}]},{},["G9z0Bl",2,7]);</script>
+    <meta name="keywords" content="fanfiction, transformative works, otw, fair use, archive" />
+    <meta name="language" content="en-US" />
+    <meta name="subject" content="fandom" />
+    <meta name="description" content="An Archive of Our Own, a project of the
+    Organization for Transformative Works" />
+    <meta name="distribution" content="GLOBAL" />
+    <meta name="classification" content="transformative works" />
+    <meta name="author" content="Organization for Transformative Works" />
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>  
+    <title>
+          Search Works
+        |
+        Archive of Our Own
+    </title>
+
+        <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/skins/skin_873_archive_2_0/1_site_screen_.css" />
+<link rel="stylesheet" type="text/css" media="only screen and (max-width: 640px), handheld" href="/stylesheets/skins/skin_873_archive_2_0/4_site_maxwidth.handheld_.css" />
+<link rel="stylesheet" type="text/css" media="speech" href="/stylesheets/skins/skin_873_archive_2_0/5_site_speech_.css" />
+<link rel="stylesheet" type="text/css" media="print" href="/stylesheets/skins/skin_873_archive_2_0/6_site_print_.css" />
+<!--[if IE 8]><link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/skins/skin_873_archive_2_0/7_site_screen_IE8_or_lower.css" /><![endif]-->
+<!--[if IE 5]><link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/skins/skin_873_archive_2_0/8_site_screen_IE5.css" /><![endif]-->
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/skins/skin_873_archive_2_0/9_site_screen_IE6.css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/skins/skin_873_archive_2_0/10_site_screen_IE7.css" /><![endif]-->
+
+
+<!--sandbox for developers	-->
+<link href="/stylesheets/sandbox.css?1406578737" media="screen" rel="stylesheet" type="text/css" />
+<script src="/javascripts/livevalidation_standalone.js?1406578737" type="text/javascript"></script>
+
+<meta content="authenticity_token" name="csrf-param" />
+<meta content="mNBAgzmE62gi4q+HBjO/+K369s4rHaw+5JqmUZbr6Y4=" name="csrf-token" />
+
+            <script>
+           window.PHRASE_CONFIG = {
+            autoLowercase: false
+          }
+        </script>
+        
+
+
+  </head>
+
+  <body>
+    <div id="outer" class="wrapper">
+      <ul id="skiplinks"><li><a href="#main">Main Content</a></li></ul>
+      <!-- BEGIN BETA CAVEATS! -->
+<noscript>
+  <p id="javascript-warning">
+    While we&#x27;ve done our best to make the core functionality of this site accessible without javascript, it will work better with it enabled. Please consider turning it on!
+  </p>
+</noscript>
+<!-- END BETA CAVEATS! --> 
+
+<!-- BEGIN header -->
+
+<div id="header" class="region">
+
+  <h1 class="heading">
+    <a href="/"><span>Archive of Our Own</span><sup> beta</sup><img alt="AO3 logo - the letters A O 3 combined with arms raised in celebration, symbolizing the joy of fannish creation in the Archive" class="logo" src="/images/ao3_logos/logo_42.png?1406578737" /></a> 
+  </h1>
+
+    <div id="greeting">
+    <h3 class="landmark heading">User Navigation</h3>
+    <ul class="user navigation actions" role="navigation">
+      <li class="dropdown">
+        <a href="/users/sgamble6">Hi, sgamble6!</a>
+        <ul class="menu" role="menu">
+          <li><a href="/users/sgamble6">My Dashboard</a></li>
+            <li><a href="/users/sgamble6/subscriptions">My Subscriptions</a></li>
+            <li><a href="/users/sgamble6/readings">My History</a></li>
+          <li><a href="/users/sgamble6/preferences">My Preferences</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+      	<a href="/works/new">Post</a>
+      	<ul class="menu" role="menu">
+          <li><a href="/works/new">New Work</a></li>
+          <li><a href="/works/new?import=true">Import Work</a></li>
+      	</ul>
+      </li>
+      <li><a href="/logout">Log Out</a></li>
+    </ul>
+
+  <p class="icon"><a href="/users/sgamble6"><img alt="" class="icon" src="/images/skins/iconsets/default/icon_user.png?1406578737" /></a></p>
+</div>
+
+
+  <h3 class="landmark heading">Site Navigation</h3>
+  <ul class="primary navigation actions" role="navigation">
+    <li class="dropdown">
+      <a href="/menu/fandoms">Fandoms</a>
+      <ul class="menu" role="menu">
+  <li><a href="/media">All Fandoms</a></li>
+      <li id="medium_5"><a href="/media/Anime%20*a*%20Manga/fandoms">Anime &amp; Manga</a></li>
+      <li id="medium_3"><a href="/media/Books%20*a*%20Literature/fandoms">Books &amp; Literature</a></li>
+      <li id="medium_4"><a href="/media/Cartoons%20*a*%20Comics%20*a*%20Graphic%20Novels/fandoms">Cartoons &amp; Comics &amp; Graphic Novels</a></li>
+      <li id="medium_7"><a href="/media/Celebrities%20*a*%20Real%20People/fandoms">Celebrities &amp; Real People</a></li>
+      <li id="medium_2"><a href="/media/Movies/fandoms">Movies</a></li>
+      <li id="medium_6"><a href="/media/Music%20*a*%20Bands/fandoms">Music &amp; Bands</a></li>
+      <li id="medium_8"><a href="/media/Other%20Media/fandoms">Other Media</a></li>
+      <li id="medium_30198"><a href="/media/Theater/fandoms">Theater</a></li>
+      <li id="medium_1"><a href="/media/TV%20Shows/fandoms">TV Shows</a></li>
+      <li id="medium_476"><a href="/media/Video%20Games/fandoms">Video Games</a></li>
+      <li id="medium_9971"><a href="/media/Uncategorized%20Fandoms/fandoms">Uncategorized Fandoms</a></li>
+</ul>
+
+    </li>
+    <li class="dropdown">
+      <a href="/menu/browse">Browse</a>
+      <ul class="menu" role="menu">
+  <li><a href="/works">Works</a></li>
+  <li><a href="/bookmarks">Bookmarks</a></li>
+  <li><a href="/tags">Tags</a></li>
+  <li><a href="/collections">Collections</a></li>
+</ul>
+
+    </li>
+    <li class="dropdown">
+      <a href="/menu/search">Search</a>
+      <ul class="menu" role="menu">
+  <li><span class="current">Works</span></li>
+  <li><a href="/bookmarks/search">Bookmarks</a></li>
+  <li><a href="/tags/search">Tags</a></li>
+  <li><a href="/people/search">People</a></li>
+</ul>
+
+    </li>
+    <li class="dropdown">
+      <a href="/menu/about">About</a>
+      <ul class="menu" role="menu">
+  <li><a href="/about">About Us</a></li>
+  <li><a href="/admin_posts">News</a></li>
+  <li><a href="/archive_faqs">FAQ</a></li>
+  <li><a href="/donate">Donate or Volunteer</a></li>
+</ul>
+
+    </li>
+	  <li class="search"><form accept-charset="UTF-8" action="/works/search" class="search" id="search" method="get"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /></div>
+  <fieldset>
+    <legend>Search Works</legend>
+    <p>
+      <label class="landmark" for="site_search">Work Search:</label>
+      <input class="text" id="site_search" name="work_search[query]" type="text" />
+      <span class="tip">tip: words:100</span>
+      <span class="submit actions"><input class="button" type="submit" value="Search" /></span>
+    </p>
+  </fieldset>
+</form></li>
+  </ul>
+
+
+
+  <div class="clear"></div>
+
+</div>
+
+
+
+<!-- END header -->
+
+      <div id="inner" class="wrapper">
+        <!-- BEGIN sidebar -->
+        <!-- END sidebar -->
+
+        <!-- BEGIN main -->
+        <div id="main" class="works-search region" role="main">
+          
+          <!--Descriptive page names, messages and instructions-->
+<h2 class="heading">Search Results</h2>
+
+<h4 class="heading">
+  You searched for:
+  Tags: One Direction (Band), Harry Styles/Louis Tomlinson Complete Language: English word count: &gt;15000 kudos count: &gt;75 sort by: date updated descending
+</h4>
+<!--/descriptions-->
+
+<!--subnav-->
+<ul class="navigation actions" role="navigation">
+  <li><a href="/works/search?commit=Search&amp;edit_search=true&amp;page=2&amp;utf8=%E2%9C%93&amp;work_search%5Bbookmarks_count%5D=&amp;work_search%5Bcharacter_names%5D=&amp;work_search%5Bcomments_count%5D=&amp;work_search%5Bcomplete%5D=1&amp;work_search%5Bcreator%5D=&amp;work_search%5Bfandom_names%5D=One+Direction+%28Band%29&amp;work_search%5Bfreeform_names%5D=&amp;work_search%5Bhits%5D=&amp;work_search%5Bkudos_count%5D=%3E75&amp;work_search%5Blanguage_id%5D=1&amp;work_search%5Bpage%5D=2&amp;work_search%5Bquery%5D=&amp;work_search%5Brating_ids%5D=&amp;work_search%5Brelationship_names%5D=Harry+Styles%2FLouis+Tomlinson&amp;work_search%5Brevised_at%5D=&amp;work_search%5Bshow_restricted%5D=true&amp;work_search%5Bsingle_chapter%5D=0&amp;work_search%5Bsort_column%5D=revised_at&amp;work_search%5Bsort_direction%5D=&amp;work_search%5Btitle%5D=&amp;work_search%5Bword_count%5D=%3E15000">Edit Your Search</a></li>
+</ul>
+<!--/subnav-->
+
+<!--main content-->
+  <h3 class="heading">838 Found  <a href="/help/work-search-results-help.html" aria-controls="#modal" class="help symbol question modal" title="Work search results help"><span class="symbol question"><span>?</span></span></a></h3>
+
+  <h3 class="landmark heading">Works List</h3>
+  <ol class="work index group">
+        <li class="work blurb group" id="work_2020584" role="article">
+  
+
+  <!--title, author, fandom-->
+  <div class="header module">
+
+    <h4 class="heading" title="title">
+      <a href="/works/2020584">The Sound of Your Voice From Far Away</a>
+      by
+        
+      <!-- do not cache -->
+      <a href="/users/pukeandcry/pseuds/pukeandcry" class="login author" rel="author">pukeandcry</a>
+
+
+  
+      
+      
+    </h4>
+
+    <h5 class="fandoms heading" title="fandom">
+      <a href="http://archiveofourown.org/tags/One%20Direction%20(Band)/works" class="tag">One Direction (Band)</a>
+      &nbsp;
+    </h5>
+
+    <!--required tags-->
+    <ul class="required-tags">
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="rating-explicit rating" title="Explicit"><span class="text">Explicit</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="warning-no warnings" title="No Archive Warnings Apply"><span class="text">No Archive Warnings Apply</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="category-slash category" title="M/M"><span class="text">M/M</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="complete-yes iswip" title="Complete Work"><span class="text">Complete Work</span></span></a></li>
+</ul>
+    <p class="datetime">25 Jul 2014</p>
+  </div>
+	  
+  <!--warnings again, cast, freeform tags-->
+  <h6 class="landmark heading">Tags</h6>
+  <ul class="tags commas">
+    <li class='warnings'><strong><a href="http://archiveofourown.org/tags/No%20Archive%20Warnings%20Apply/works" class="tag">No Archive Warnings Apply</a></strong></li><li class='relationships'><a href="http://archiveofourown.org/tags/Harry%20Styles*s*Louis%20Tomlinson/works" class="tag">Harry Styles/Louis Tomlinson</a></li><li class='characters'><a href="http://archiveofourown.org/tags/Harry%20Styles/works" class="tag">Harry Styles</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Louis%20Tomlinson/works" class="tag">Louis Tomlinson</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Niall%20Horan/works" class="tag">Niall Horan</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Liam%20Payne/works" class="tag">Liam Payne</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Zayn%20Malik/works" class="tag">Zayn Malik</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Nick%20Grimshaw/works" class="tag">Nick Grimshaw</a></li><li class='freeforms'><a href="http://archiveofourown.org/tags/Canon%20Compliant/works" class="tag">Canon Compliant</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Road%20Trips/works" class="tag">Road Trips</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Take%20Me%20Home%20Tour/works" class="tag">Take Me Home Tour</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Camping/works" class="tag">Camping</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Friends%20to%20Lovers/works" class="tag">Friends to Lovers</a></li>
+  </ul>
+
+  <!--summary-->	
+    <h6 class="landmark heading">Summary</h6>
+    <blockquote class="userstuff summary" title="summary">
+      <p><i>It'd be perfect, he convinces himself. Things with Lou are – well. They're the way they are, and there's no point dwelling on why it's got that way. But he thinks this would help -- not fix them, because they're not </i>broken<i>. They don't need to be put back together, they're just. Out of sync, maybe. It would </i>help<i>. He thinks it would, anyway, if they could just be the two of them again, to be alone together with no outside influences pressing claustrophobically in on them, just for a bit. And driving down an empty highway with nothing else but Louis beside him is the best way to do that that he can imagine.</i></p>
+<p>Or, after the U.S. leg of the Take Me Home tour, Harry and Louis drive from L.A. to NYC. They figure some things out, like how to deal with the distance that's been growing between them.</p>
+    </blockquote>
+  	
+
+  <!--stats-->
+
+  <dl class="stats" title="stats">
+      <dt>Language:</dt>
+      <dd>English</dd>
+    <dt>Words:</dt>
+    <dd>39,541</dd>
+    <dt>Chapters:</dt>
+    <dd>1/1</dd>
+
+
+
+    <dt>Comments:</dt>
+    <dd><a href="/works/2020584?show_comments=true#comments">20</a></dd>
+    <dt>Kudos:</dt>
+    <dd><a href="/works/2020584#comments">242</a></dd>
+    <dt>Bookmarks:</dt>
+    <dd><a href="/works/2020584/bookmarks">95</a></dd>
+
+    <dt>Hits:</dt>
+    <dd>5040</dd>
+
+  </dl>
+
+
+</li>
+
+        <li class="work blurb group" id="work_1462594" role="article">
+  
+
+  <!--title, author, fandom-->
+  <div class="header module">
+
+    <h4 class="heading" title="title">
+      <a href="/works/1462594">Like One Thousand Knives</a>
+      by
+        
+      <!-- do not cache -->
+      <a href="/users/Mollypop/pseuds/Mollypop" class="login author" rel="author">Mollypop</a>
+
+
+  
+      
+      
+    </h4>
+
+    <h5 class="fandoms heading" title="fandom">
+      <a href="http://archiveofourown.org/tags/One%20Direction%20(Band)/works" class="tag">One Direction (Band)</a>
+      &nbsp;
+    </h5>
+
+    <!--required tags-->
+    <ul class="required-tags">
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="rating-mature rating" title="Mature"><span class="text">Mature</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="warning-choosenotto warnings" title="Choose Not To Use Archive Warnings"><span class="text">Choose Not To Use Archive Warnings</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="category-multi category" title="M/M, F/M"><span class="text">M/M, F/M</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="complete-yes iswip" title="Complete Work"><span class="text">Complete Work</span></span></a></li>
+</ul>
+    <p class="datetime">25 Jul 2014</p>
+  </div>
+	  
+  <!--warnings again, cast, freeform tags-->
+  <h6 class="landmark heading">Tags</h6>
+  <ul class="tags commas">
+    <li class='warnings'><strong><a href="http://archiveofourown.org/tags/Choose%20Not%20To%20Use%20Archive%20Warnings/works" class="tag">Author Chose Not To Use Archive Warnings</a></strong></li><li class='relationships'><a href="http://archiveofourown.org/tags/Harry%20Styles*s*Louis%20Tomlinson/works" class="tag">Harry Styles/Louis Tomlinson</a></li> <li class='relationships'><a href="http://archiveofourown.org/tags/Eleanor%20Calder*s*Louis%20Tomlinson/works" class="tag">Eleanor Calder/Louis Tomlinson</a></li> <li class='relationships'><a href="http://archiveofourown.org/tags/Perrie%20Edwards*s*Zayn%20Malik/works" class="tag">Perrie Edwards/Zayn Malik</a></li><li class='characters'><a href="http://archiveofourown.org/tags/Harry%20Stlyes/works" class="tag">Harry Stlyes</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Louis%20Tomlinson/works" class="tag">Louis Tomlinson</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Niall%20Horan/works" class="tag">Niall Horan</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Liam%20Payne/works" class="tag">Liam Payne</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Zayn%20Malik/works" class="tag">Zayn Malik</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Eleanor%20Calder/works" class="tag">Eleanor Calder</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Perrie%20Edwards/works" class="tag">Perrie Edwards</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Jay%20Tomlinson/works" class="tag">Jay Tomlinson</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Mark%20Tomlinson/works" class="tag">Mark Tomlinson</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Kendall%20Jenner/works" class="tag">Kendall Jenner</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Daniel%20Deakin/works" class="tag">Daniel Deakin</a></li><li class='freeforms'><a href="http://archiveofourown.org/tags/Alternate%20Universe%20-%20Titanic%20Fusion/works" class="tag">Alternate Universe - Titanic Fusion</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/RMS%20Titanic/works" class="tag">RMS Titanic</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Poor%20Harry%20Styles/works" class="tag">Poor Harry Styles</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Rich%20Louis%20Tomlinson/works" class="tag">Rich Louis Tomlinson</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Poor%20Liam%20Payne/works" class="tag">Poor Liam Payne</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Poor%20Niall%20Horan/works" class="tag">Poor Niall Horan</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Poor%20Zayn%20Malik/works" class="tag">Poor Zayn Malik</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/AU/works" class="tag">AU</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Alternate%20Universe/works" class="tag">Alternate Universe</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Fluff/works" class="tag">Fluff</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Eventual%20Smut/works" class="tag">Eventual Smut</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Angst/works" class="tag">Angst</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Fluff%20and%20Angst/works" class="tag">Fluff and Angst</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Obviously%20there%20will%20be%20smut%20later/works" class="tag">Obviously there will be smut later</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/I&#x27;m%20still%20bad%20at%20tags/works" class="tag">I&#x27;m still bad at tags</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/oh%20well/works" class="tag">oh well</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/You%20aren&#x27;t%20reading%20these%20anyway/works" class="tag">You aren&#x27;t reading these anyway</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/i&#x27;ll%20add%20more%20later/works" class="tag">i&#x27;ll add more later</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/larry%20stylinson%20-%20Freeform/works" class="tag">larry stylinson - Freeform</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/This%20might%20get%20sad/works" class="tag">This might get sad</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/I&#x27;m%20Sorry/works" class="tag">I&#x27;m Sorry</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/top!Louis/works" class="tag">top!Louis</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Bottom!Harry/works" class="tag">Bottom!Harry</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Louis%20is%20afraid%20of%20heights/works" class="tag">Louis is afraid of heights</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Anemic%20Harry/works" class="tag">Anemic Harry</a></li>
+  </ul>
+
+  <!--summary-->	
+    <h6 class="landmark heading">Summary</h6>
+    <blockquote class="userstuff summary" title="summary">
+      <p>"Do you really know where're going, Zayn?" Harry shouted above the erupting volume of the crowd around them. Zayn was in front, leading the gang of four eccentric lads who ran through the crowd, half-filled sacks bouncing against their thighs and wrecking their clothes. Each boy stayed behind Zayn, hand in hand so not one would be lost, Liam follwing Zayn, Niall following Liam, and Harry in the back. They cheered and wailed, and the watchers around them cheered along with them, whistling when they saw the paper treasures that Zayn held in his hand. They battered against the wind when Zayn handed one of the two treasures to Liam, his rightfully won ticket to the so rumoured, unsinkable, "Ship of Dreams".</p>
+    </blockquote>
+  	
+
+  <!--stats-->
+
+  <dl class="stats" title="stats">
+      <dt>Language:</dt>
+      <dd>English</dd>
+    <dt>Words:</dt>
+    <dd>56,060</dd>
+    <dt>Chapters:</dt>
+    <dd>19/19</dd>
+
+
+
+    <dt>Comments:</dt>
+    <dd><a href="/works/1462594?show_comments=true&amp;view_full_work=true#comments">27</a></dd>
+    <dt>Kudos:</dt>
+    <dd><a href="/works/1462594?view_full_work=true#comments">82</a></dd>
+    <dt>Bookmarks:</dt>
+    <dd><a href="/works/1462594/bookmarks">9</a></dd>
+
+    <dt>Hits:</dt>
+    <dd>1852</dd>
+
+  </dl>
+
+
+</li>
+
+        <li class="work blurb group" id="work_1174912" role="article">
+  
+
+  <!--title, author, fandom-->
+  <div class="header module">
+
+    <h4 class="heading" title="title">
+      <a href="/works/1174912">I Hunger For Your Beautiful Embrace</a>
+      by
+        
+      <!-- do not cache -->
+      <a href="/users/thecheshirepussycat/pseuds/thecheshirepussycat" class="login author" rel="author">thecheshirepussycat</a>
+
+
+  
+      
+      
+    </h4>
+
+    <h5 class="fandoms heading" title="fandom">
+      <a href="http://archiveofourown.org/tags/One%20Direction%20(Band)/works" class="tag">One Direction (Band)</a>
+      &nbsp;
+    </h5>
+
+    <!--required tags-->
+    <ul class="required-tags">
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="rating-explicit rating" title="Explicit"><span class="text">Explicit</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="warning-yes warnings" title="Graphic Depictions Of Violence"><span class="text">Graphic Depictions Of Violence</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="category-slash category" title="M/M"><span class="text">M/M</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="complete-yes iswip" title="Complete Work"><span class="text">Complete Work</span></span></a></li>
+</ul>
+    <p class="datetime">24 Jul 2014</p>
+  </div>
+	  
+  <!--warnings again, cast, freeform tags-->
+  <h6 class="landmark heading">Tags</h6>
+  <ul class="tags commas">
+    <li class='warnings'><strong><a href="http://archiveofourown.org/tags/Graphic%20Depictions%20Of%20Violence/works" class="tag">Graphic Depictions Of Violence</a></strong></li><li class='relationships'><a href="http://archiveofourown.org/tags/Harry%20Styles*s*Louis%20Tomlinson/works" class="tag">Harry Styles/Louis Tomlinson</a></li> <li class='relationships'><a href="http://archiveofourown.org/tags/Niall%20Horan*s*Liam%20Payne/works" class="tag">Niall Horan/Liam Payne</a></li> <li class='relationships'><a href="http://archiveofourown.org/tags/Perrie%20Edwards*s*Zayn%20Malik/works" class="tag">Perrie Edwards/Zayn Malik</a></li><li class='characters'><a href="http://archiveofourown.org/tags/Harry%20Styles/works" class="tag">Harry Styles</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Louis%20Tomlinson/works" class="tag">Louis Tomlinson</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Niall%20Horan/works" class="tag">Niall Horan</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Liam%20Payne/works" class="tag">Liam Payne</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Zayn%20Malik/works" class="tag">Zayn Malik</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Perrie%20Edwards/works" class="tag">Perrie Edwards</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Jade%20Thirlwall/works" class="tag">Jade Thirlwall</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Jesy%20Nelson/works" class="tag">Jesy Nelson</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Leigh-Anne%20Pinnock/works" class="tag">Leigh-Anne Pinnock</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Original%20Character/works" class="tag">Original Character</a></li><li class='freeforms'><a href="http://archiveofourown.org/tags/Alternate%20Universe%20-%20Ancient%20Rome/works" class="tag">Alternate Universe - Ancient Rome</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Gladiators/works" class="tag">Gladiators</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Alternate%20Universe%20-%20Slavery/works" class="tag">Alternate Universe - Slavery</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Explicit%20Sexual%20Content/works" class="tag">Explicit Sexual Content</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Sexual%20Abuse/works" class="tag">Sexual Abuse</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/War/works" class="tag">War</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Alternate%20Universe%20-%20Gods%20*a*%20Goddesses/works" class="tag">Alternate Universe - Gods &amp; Goddesses</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Historical%20Inaccuracy/works" class="tag">Historical Inaccuracy</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Animal%20Sacrifice/works" class="tag">Animal Sacrifice</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Character%20Death/works" class="tag">Character Death</a></li>
+  </ul>
+
+  <!--summary-->	
+    <h6 class="landmark heading">Summary</h6>
+    <blockquote class="userstuff summary" title="summary">
+      <p>Legatus Harry is governor of Capua and Dominus of his estate. He governs with a firm and harsh rule and has never been known to be soft. That is until Louis comes into his life. A beautiful slave who creeps into Harry’s house and heart.</p><p>But in the times of Ancient Rome, when sex, wars, and death are the entertainment of the times, life and love are rare commodities.</p>
+    </blockquote>
+  	
+
+  <!--stats-->
+
+  <dl class="stats" title="stats">
+      <dt>Language:</dt>
+      <dd>English</dd>
+    <dt>Words:</dt>
+    <dd>57,181</dd>
+    <dt>Chapters:</dt>
+    <dd>16/16</dd>
+
+
+
+    <dt>Comments:</dt>
+    <dd><a href="/works/1174912?show_comments=true&amp;view_full_work=true#comments">127</a></dd>
+    <dt>Kudos:</dt>
+    <dd><a href="/works/1174912?view_full_work=true#comments">410</a></dd>
+    <dt>Bookmarks:</dt>
+    <dd><a href="/works/1174912/bookmarks">112</a></dd>
+
+    <dt>Hits:</dt>
+    <dd>7541</dd>
+
+  </dl>
+
+
+</li>
+
+        <li class="work blurb group" id="work_2013129" role="article">
+  
+
+  <!--title, author, fandom-->
+  <div class="header module">
+
+    <h4 class="heading" title="title">
+      <a href="/works/2013129">Light in Darkness Come Through</a>
+      by
+        
+      <!-- do not cache -->
+      <a href="/users/whoknows/pseuds/whoknows" class="login author" rel="author">whoknows</a>
+
+
+  
+      
+      
+    </h4>
+
+    <h5 class="fandoms heading" title="fandom">
+      <a href="http://archiveofourown.org/tags/One%20Direction%20(Band)/works" class="tag">One Direction (Band)</a>
+      &nbsp;
+    </h5>
+
+    <!--required tags-->
+    <ul class="required-tags">
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="rating-explicit rating" title="Explicit"><span class="text">Explicit</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="warning-choosenotto warnings" title="Choose Not To Use Archive Warnings"><span class="text">Choose Not To Use Archive Warnings</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="category-slash category" title="M/M"><span class="text">M/M</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="complete-yes iswip" title="Complete Work"><span class="text">Complete Work</span></span></a></li>
+</ul>
+    <p class="datetime">24 Jul 2014</p>
+  </div>
+	  
+  <!--warnings again, cast, freeform tags-->
+  <h6 class="landmark heading">Tags</h6>
+  <ul class="tags commas">
+    <li class='warnings'><strong><a href="http://archiveofourown.org/tags/Choose%20Not%20To%20Use%20Archive%20Warnings/works" class="tag">Author Chose Not To Use Archive Warnings</a></strong></li><li class='relationships'><a href="http://archiveofourown.org/tags/Harry%20Styles*s*Louis%20Tomlinson/works" class="tag">Harry Styles/Louis Tomlinson</a></li><li class='freeforms'><a href="http://archiveofourown.org/tags/Explicit%20Sexual%20Content/works" class="tag">Explicit Sexual Content</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Explicit%20Language/works" class="tag">Explicit Language</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Alpha*s*Omega/works" class="tag">Alpha/Omega</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Alpha*s*Beta*s*Omega%20Dynamics/works" class="tag">Alpha/Beta/Omega Dynamics</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Dubious%20Consent/works" class="tag">Dubious Consent</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Rough%20Sex/works" class="tag">Rough Sex</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Manipulation/works" class="tag">Manipulation</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Multiple%20Orgasms/works" class="tag">Multiple Orgasms</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Spanking/works" class="tag">Spanking</a></li>
+  </ul>
+
+  <!--summary-->	
+    <h6 class="landmark heading">Summary</h6>
+    <blockquote class="userstuff summary" title="summary">
+      <p>Companion piece to <a href="http://archiveofourown.org/works/1836709">Who Would've Thought</a></p>
+<p> </p>
+<p>There’s two parts to it, really. The first part is Louis being an omega and lying about that for years. The second, much more complicated part, is that Harry knew that Louis was lying about <i>something</i> for years, even though he didn’t know what it was.</p>
+<p>Louis being an omega is an idea that crosses Harry’s mind more than a few times over the years. He’s pretty sure that he’s not the only person who’s ever had the thought, but he’s confident in saying that he’s the only one who wasn’t thinking it because Louis is tiny.</p>
+    </blockquote>
+  	
+    <h6 class="landmark heading">Series</h6>
+    <ul class="series">
+        <li>
+          Part <strong>2</strong> of <a href="/series/130617">ABO 'verse</a>
+        </li>
+    </ul>
+
+  <!--stats-->
+
+  <dl class="stats" title="stats">
+      <dt>Language:</dt>
+      <dd>English</dd>
+    <dt>Words:</dt>
+    <dd>20,012</dd>
+    <dt>Chapters:</dt>
+    <dd>1/1</dd>
+
+
+
+    <dt>Comments:</dt>
+    <dd><a href="/works/2013129?show_comments=true#comments">22</a></dd>
+    <dt>Kudos:</dt>
+    <dd><a href="/works/2013129#comments">161</a></dd>
+    <dt>Bookmarks:</dt>
+    <dd><a href="/works/2013129/bookmarks">45</a></dd>
+
+    <dt>Hits:</dt>
+    <dd>4526</dd>
+
+  </dl>
+
+
+</li>
+
+        <li class="work blurb group" id="work_2009661" role="article">
+  
+
+  <!--title, author, fandom-->
+  <div class="header module">
+
+    <h4 class="heading" title="title">
+      <a href="/works/2009661">Une Photographie D'Amour</a>
+      by
+        
+      <!-- do not cache -->
+      <a href="/users/CatyDreamDwyer/pseuds/PumpkinspiceLou" class="login author" rel="author">PumpkinspiceLou (CatyDreamDwyer)</a>
+
+
+  
+      
+      
+    </h4>
+
+    <h5 class="fandoms heading" title="fandom">
+      <a href="http://archiveofourown.org/tags/One%20Direction%20(Band)/works" class="tag">One Direction (Band)</a>
+      &nbsp;
+    </h5>
+
+    <!--required tags-->
+    <ul class="required-tags">
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="rating-notrated rating" title="Not Rated"><span class="text">Not Rated</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="warning-no warnings" title="No Archive Warnings Apply"><span class="text">No Archive Warnings Apply</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="category-slash category" title="M/M"><span class="text">M/M</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="complete-yes iswip" title="Complete Work"><span class="text">Complete Work</span></span></a></li>
+</ul>
+    <p class="datetime">23 Jul 2014</p>
+  </div>
+	  
+  <!--warnings again, cast, freeform tags-->
+  <h6 class="landmark heading">Tags</h6>
+  <ul class="tags commas">
+    <li class='warnings'><strong><a href="http://archiveofourown.org/tags/No%20Archive%20Warnings%20Apply/works" class="tag">No Archive Warnings Apply</a></strong></li><li class='relationships'><a href="http://archiveofourown.org/tags/Harry%20Styles*s*Louis%20Tomlinson/works" class="tag">Harry Styles/Louis Tomlinson</a></li> <li class='relationships'><a href="http://archiveofourown.org/tags/Zerrie%20is%20briefly%20mentioned%20in%20a%20sentence/works" class="tag">Zerrie is briefly mentioned in a sentence</a></li> <li class='relationships'><a href="http://archiveofourown.org/tags/And%20there&#x27;s%20some%20Niam%20if%20you%20squint/works" class="tag">And there&#x27;s some Niam if you squint</a></li><li class='characters'><a href="http://archiveofourown.org/tags/Louis%20Tomlinson/works" class="tag">Louis Tomlinson</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Harry%20Styles/works" class="tag">Harry Styles</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Liam%20gets%20a%20few%20scenes/works" class="tag">Liam gets a few scenes</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/the%20rest%20of%20the%20boys%20get%20like%20a%20sentence/works" class="tag">the rest of the boys get like a sentence</a></li><li class='freeforms'><a href="http://archiveofourown.org/tags/Alternate%20Universe/works" class="tag">Alternate Universe</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Frenchboy%20Harry/works" class="tag">Frenchboy Harry</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Louis&#x27;%20thoughts%20like%20to%20interupt/works" class="tag">Louis&#x27; thoughts like to interupt</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Fluff/works" class="tag">Fluff</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/SO%20MUCH%20FLUFF/works" class="tag">SO MUCH FLUFF</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/And%20an%20attempted%20smut%20scene/works" class="tag">And an attempted smut scene</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/And%20a%20little%20bit%20of%20angst%20at%20the%20end/works" class="tag">And a little bit of angst at the end</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/But%20mostly%20fluff/works" class="tag">But mostly fluff</a></li>
+  </ul>
+
+  <!--summary-->	
+    <h6 class="landmark heading">Summary</h6>
+    <blockquote class="userstuff summary" title="summary">
+      <p><em>But how can anyone expect him to say no to this boy? With his mess of curls and shining green eyes and hopeful smile and </em>fucking dimples<em>! It’s so endearing, and before Louis can even give a second thought, the word “deal” is falling from his lips.</em></p>
+<p>Or the one where Louis gets lost in Paris and Harry shows him around in exchange for a photo.</p>
+    </blockquote>
+  	
+
+  <!--stats-->
+
+  <dl class="stats" title="stats">
+      <dt>Language:</dt>
+      <dd>English</dd>
+    <dt>Words:</dt>
+    <dd>25,571</dd>
+    <dt>Chapters:</dt>
+    <dd>1/1</dd>
+
+
+
+    <dt>Comments:</dt>
+    <dd><a href="/works/2009661?show_comments=true#comments">20</a></dd>
+    <dt>Kudos:</dt>
+    <dd><a href="/works/2009661#comments">130</a></dd>
+    <dt>Bookmarks:</dt>
+    <dd><a href="/works/2009661/bookmarks">31</a></dd>
+
+    <dt>Hits:</dt>
+    <dd>2960</dd>
+
+  </dl>
+
+
+</li>
+
+        <li class="work blurb group" id="work_1995597" role="article">
+  
+
+  <!--title, author, fandom-->
+  <div class="header module">
+
+    <h4 class="heading" title="title">
+      <a href="/works/1995597">sinking like sand in your sea</a>
+      by
+        
+      <!-- do not cache -->
+      <a href="/users/DanniTomlinson/pseuds/DanniTomlinson" class="login author" rel="author">DanniTomlinson</a>
+
+
+  
+      
+      
+    </h4>
+
+    <h5 class="fandoms heading" title="fandom">
+      <a href="http://archiveofourown.org/tags/One%20Direction%20(Band)/works" class="tag">One Direction (Band)</a>
+      &nbsp;
+    </h5>
+
+    <!--required tags-->
+    <ul class="required-tags">
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="rating-notrated rating" title="Not Rated"><span class="text">Not Rated</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="warning-choosenotto warnings" title="Choose Not To Use Archive Warnings"><span class="text">Choose Not To Use Archive Warnings</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="category-multi category" title="F/M, M/M"><span class="text">F/M, M/M</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="complete-yes iswip" title="Complete Work"><span class="text">Complete Work</span></span></a></li>
+</ul>
+    <p class="datetime">21 Jul 2014</p>
+  </div>
+	  
+  <!--warnings again, cast, freeform tags-->
+  <h6 class="landmark heading">Tags</h6>
+  <ul class="tags commas">
+    <li class='warnings'><strong><a href="http://archiveofourown.org/tags/Choose%20Not%20To%20Use%20Archive%20Warnings/works" class="tag">Author Chose Not To Use Archive Warnings</a></strong></li><li class='relationships'><a href="http://archiveofourown.org/tags/Harry%20Styles*s*Louis%20Tomlinson/works" class="tag">Harry Styles/Louis Tomlinson</a></li> <li class='relationships'><a href="http://archiveofourown.org/tags/Niall%20Horan*s*Liam%20Payne/works" class="tag">Niall Horan/Liam Payne</a></li> <li class='relationships'><a href="http://archiveofourown.org/tags/Perrie%20Edwards*s*Zayn%20Malik/works" class="tag">Perrie Edwards/Zayn Malik</a></li> <li class='relationships'><a href="http://archiveofourown.org/tags/mentioned%20Nick%20Grimshaw*s*Harry%20Styles/works" class="tag">mentioned Nick Grimshaw/Harry Styles</a></li> <li class='relationships'><a href="http://archiveofourown.org/tags/mentioned%20Nick%20Grimshaw*s*Louis%20Tomlinson/works" class="tag">mentioned Nick Grimshaw/Louis Tomlinson</a></li><li class='characters'><a href="http://archiveofourown.org/tags/Harry%20Styles/works" class="tag">Harry Styles</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Louis%20Tomlinson/works" class="tag">Louis Tomlinson</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Niall%20Horan/works" class="tag">Niall Horan</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Liam%20Payne/works" class="tag">Liam Payne</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Gemma%20Styles/works" class="tag">Gemma Styles</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Jay%20Tomlinson/works" class="tag">Jay Tomlinson</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Tomlinson%20Sisters/works" class="tag">Tomlinson Sisters</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Eleanor%20Calder/works" class="tag">Eleanor Calder</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Zayn%20Malik/works" class="tag">Zayn Malik</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Cher%20Lloyd/works" class="tag">Cher Lloyd</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Beyonc%C3%A9%20Knowles/works" class="tag">Beyoncé Knowles</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Olly%20Murs/works" class="tag">Olly Murs</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Matt%20Healy/works" class="tag">Matt Healy</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Perrie%20Edwards/works" class="tag">Perrie Edwards</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Jesy%20Nelson/works" class="tag">Jesy Nelson</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Jade%20Thirlwall/works" class="tag">Jade Thirlwall</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Leigh-Anne%20Pinnock/works" class="tag">Leigh-Anne Pinnock</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Leona%20Lewis%20(Singer)/works" class="tag">Leona Lewis (Singer)</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/OFC/works" class="tag">OFC</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/OMC/works" class="tag">OMC</a></li><li class='freeforms'><a href="http://archiveofourown.org/tags/Oh%20god/works" class="tag">Oh god</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/okay/works" class="tag">okay</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/so%20it&#x27;s%20based%20off%20the%20kissing%20video/works" class="tag">so it&#x27;s based off the kissing video</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Fluff/works" class="tag">Fluff</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Tooth-Rotting%20Fluff/works" class="tag">Tooth-Rotting Fluff</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Schmoop/works" class="tag">Schmoop</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Angst%20with%20a%20Happy%20Ending/works" class="tag">Angst with a Happy Ending</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Angst/works" class="tag">Angst</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Banter/works" class="tag">Banter</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Louis%20is%20a%20wedding%20planner/works" class="tag">Louis is a wedding planner</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/harry%20is%20a%20photographer/works" class="tag">harry is a photographer</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/but%20you%20dont%20hear%20much%20about%20that/works" class="tag">but you dont hear much about that</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/and%20Louis&#x27;%20an%20idiot/works" class="tag">and Louis&#x27; an idiot</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/What&#x27;s%20new/works" class="tag">What&#x27;s new</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/harry%20is%20so%20sweet/works" class="tag">harry is so sweet</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Duchess%20the%20Cat/works" class="tag">Duchess the Cat</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Louis%20is%20a%20cat%20man/works" class="tag">Louis is a cat man</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/but%20not%20really/works" class="tag">but not really</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/he%20likes%20dick/works" class="tag">he likes dick</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Anal%20Fingering/works" class="tag">Anal Fingering</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Anal%20Sex/works" class="tag">Anal Sex</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/slight%20D*s*s/works" class="tag">slight D/s</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Under-negotiated%20Kink/works" class="tag">Under-negotiated Kink</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Spanking/works" class="tag">Spanking</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Dom%20Louis/works" class="tag">Dom Louis</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Sub%20Harry/works" class="tag">Sub Harry</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/lots%20of%20blow%20jobs/works" class="tag">lots of blow jobs</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/kissing%20and%20cuddling%20and%20disney%20movies/works" class="tag">kissing and cuddling and disney movies</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/I%20feel%20like%20I&#x27;m%20forgetting%20stuff%20again/works" class="tag">I feel like I&#x27;m forgetting stuff again</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/I%20suck%20at%20tagging/works" class="tag">I suck at tagging</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/would%20you%20consider%20this%20sugar%20daddy%20and%20sugar%20baby*q*/works" class="tag">would you consider this sugar daddy and sugar baby?</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/i%20dont%20know/works" class="tag">i dont know</a></li>
+  </ul>
+
+  <!--summary-->	
+    <h6 class="landmark heading">Summary</h6>
+    <blockquote class="userstuff summary" title="summary">
+      <p>After a minute of silent communication with their eyes and body language and soft caresses, Louis can feel the air around them thicken like they’re in a bubble, their own little world. He doesn’t think about the camera. He doesn’t think about the twenty students watching Harry and him. He just knows that he wants to close the very short distance between him and Harry. He wants to mold them together, so that every inch of them is touching. Two half souls becoming one with two hearts, two brains, two lips touching and a connection no one else could ever have. And if that’s not sappy Louis doesn’t know what is. Softly their noses brush and his eyes slip shut and their lips press together. It’s gentle. It’s effortless. It's definitely something. Their lips fit together like they’d known each other for years and not minutes.</p><p>And that's how Louis knows he's fucked.</p><p>or the one where Louis is the wedding planner who has never had a wedding of his own and Harry is always the groomsmen but never the groom.</p>
+    </blockquote>
+  	
+
+  <!--stats-->
+
+  <dl class="stats" title="stats">
+      <dt>Language:</dt>
+      <dd>English</dd>
+    <dt>Words:</dt>
+    <dd>36,244</dd>
+    <dt>Chapters:</dt>
+    <dd>1/1</dd>
+
+
+
+    <dt>Comments:</dt>
+    <dd><a href="/works/1995597?show_comments=true#comments">16</a></dd>
+    <dt>Kudos:</dt>
+    <dd><a href="/works/1995597#comments">110</a></dd>
+    <dt>Bookmarks:</dt>
+    <dd><a href="/works/1995597/bookmarks">36</a></dd>
+
+    <dt>Hits:</dt>
+    <dd>3442</dd>
+
+  </dl>
+
+
+</li>
+
+        <li class="work blurb group" id="work_1124733" role="article">
+  
+
+  <!--title, author, fandom-->
+  <div class="header module">
+
+    <h4 class="heading" title="title">
+      <a href="/works/1124733">Harry Good Hands</a>
+      by
+        
+      <!-- do not cache -->
+      <a href="/users/T32white/pseuds/T32white" class="login author" rel="author">T32white</a>
+
+
+  
+      
+      
+    </h4>
+
+    <h5 class="fandoms heading" title="fandom">
+      <a href="http://archiveofourown.org/tags/One%20Direction%20(Band)/works" class="tag">One Direction (Band)</a>
+      &nbsp;
+    </h5>
+
+    <!--required tags-->
+    <ul class="required-tags">
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="rating-explicit rating" title="Explicit"><span class="text">Explicit</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="warning-choosenotto warnings" title="Choose Not To Use Archive Warnings"><span class="text">Choose Not To Use Archive Warnings</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="category-slash category" title="M/M"><span class="text">M/M</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="complete-yes iswip" title="Complete Work"><span class="text">Complete Work</span></span></a></li>
+</ul>
+    <p class="datetime">19 Jul 2014</p>
+  </div>
+	  
+  <!--warnings again, cast, freeform tags-->
+  <h6 class="landmark heading">Tags</h6>
+  <ul class="tags commas">
+    <li class='warnings'><strong><a href="http://archiveofourown.org/tags/Choose%20Not%20To%20Use%20Archive%20Warnings/works" class="tag">Author Chose Not To Use Archive Warnings</a></strong></li><li class='relationships'><a href="http://archiveofourown.org/tags/Harry%20Styles*s*Louis%20Tomlinson/works" class="tag">Harry Styles/Louis Tomlinson</a></li><li class='characters'><a href="http://archiveofourown.org/tags/Harry%20Styles/works" class="tag">Harry Styles</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Louis%20Tomlinson/works" class="tag">Louis Tomlinson</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Zayn%20Malik/works" class="tag">Zayn Malik</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Liam%20Payne/works" class="tag">Liam Payne</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Stan%20Lucas/works" class="tag">Stan Lucas</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Coach%20Simon/works" class="tag">Coach Simon</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Coach%20Paul/works" class="tag">Coach Paul</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Anne%20Styles/works" class="tag">Anne Styles</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Des%20Styles/works" class="tag">Des Styles</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Guidance%20Counselor%20Niall/works" class="tag">Guidance Counselor Niall</a></li><li class='freeforms'><a href="http://archiveofourown.org/tags/Athletic%20training/works" class="tag">Athletic training</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Massage/works" class="tag">Massage</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Sports%20Medicine/works" class="tag">Sports Medicine</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/High%20School%20AU/works" class="tag">High School AU</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/English%20Football/works" class="tag">English Football</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Oral%20Fixation/works" class="tag">Oral Fixation</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Louis%20Gets%20Hurt%20A%20Lot%20in%20Practice*d**d**d**d**d*I%20Wonder%20Why*q*/works" class="tag">Louis Gets Hurt A Lot in Practice.....I Wonder Why?</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Fun%20on%20a%20Training%20Table/works" class="tag">Fun on a Training Table</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Fun%20with%20Ice/works" class="tag">Fun with Ice</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Fun%20with%20Icy%20Hot/works" class="tag">Fun with Icy Hot</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Mild%20Teasing*s*Hazing/works" class="tag">Mild Teasing/Hazing</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Sexually%20Frustrated%20Louis/works" class="tag">Sexually Frustrated Louis</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Year%2010%20Harry/works" class="tag">Year 10 Harry</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Year%2012%20Louis/works" class="tag">Year 12 Louis</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Beer%20Pong!/works" class="tag">Beer Pong!</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Body%20Shots/works" class="tag">Body Shots</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Harry%20is%20Not%20an%20Innocent%20Cupcake/works" class="tag">Harry is Not an Innocent Cupcake</a></li>
+  </ul>
+
+  <!--summary-->	
+    <h6 class="landmark heading">Summary</h6>
+    <blockquote class="userstuff summary" title="summary">
+      <p>Harry is complete shit at soccer, but he absolutely loves the game.  And when Harry has to transfer back to school in England his freshman year, the only elective left open is athletic trainer to the football team.   Good thing Des is an orthopedist and Anne's a massage therapist and licensed in acupuncture.  Maybe Harry can find a way to help the team, after all?</p>
+    </blockquote>
+  	
+
+  <!--stats-->
+
+  <dl class="stats" title="stats">
+      <dt>Language:</dt>
+      <dd>English</dd>
+    <dt>Words:</dt>
+    <dd>86,913</dd>
+    <dt>Chapters:</dt>
+    <dd>24/24</dd>
+
+
+
+    <dt>Comments:</dt>
+    <dd><a href="/works/1124733?show_comments=true&amp;view_full_work=true#comments">146</a></dd>
+    <dt>Kudos:</dt>
+    <dd><a href="/works/1124733?view_full_work=true#comments">299</a></dd>
+    <dt>Bookmarks:</dt>
+    <dd><a href="/works/1124733/bookmarks">62</a></dd>
+
+    <dt>Hits:</dt>
+    <dd>10428</dd>
+
+  </dl>
+
+
+</li>
+
+        <li class="work blurb group" id="work_1983942" role="article">
+  
+
+  <!--title, author, fandom-->
+  <div class="header module">
+
+    <h4 class="heading" title="title">
+      <a href="/works/1983942">the wanting comes in waves</a>
+      by
+        
+      <!-- do not cache -->
+      <a href="/users/lissomely/pseuds/lissomely" class="login author" rel="author">lissomely</a>
+
+
+  
+      
+      
+    </h4>
+
+    <h5 class="fandoms heading" title="fandom">
+      <a href="http://archiveofourown.org/tags/One%20Direction%20(Band)/works" class="tag">One Direction (Band)</a>
+      &nbsp;
+    </h5>
+
+    <!--required tags-->
+    <ul class="required-tags">
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="rating-explicit rating" title="Explicit"><span class="text">Explicit</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="warning-no warnings" title="No Archive Warnings Apply"><span class="text">No Archive Warnings Apply</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="category-slash category" title="M/M"><span class="text">M/M</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="complete-yes iswip" title="Complete Work"><span class="text">Complete Work</span></span></a></li>
+</ul>
+    <p class="datetime">19 Jul 2014</p>
+  </div>
+	  
+  <!--warnings again, cast, freeform tags-->
+  <h6 class="landmark heading">Tags</h6>
+  <ul class="tags commas">
+    <li class='warnings'><strong><a href="http://archiveofourown.org/tags/No%20Archive%20Warnings%20Apply/works" class="tag">No Archive Warnings Apply</a></strong></li><li class='relationships'><a href="http://archiveofourown.org/tags/Harry%20Styles*s*Louis%20Tomlinson/works" class="tag">Harry Styles/Louis Tomlinson</a></li> <li class='relationships'><a href="http://archiveofourown.org/tags/Zayn%20Malik*s*Liam%20Payne/works" class="tag">Zayn Malik/Liam Payne</a></li><li class='characters'><a href="http://archiveofourown.org/tags/Harry%20Styles/works" class="tag">Harry Styles</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Louis%20Tomlinson/works" class="tag">Louis Tomlinson</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Zayn%20Malik/works" class="tag">Zayn Malik</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Liam%20Payne/works" class="tag">Liam Payne</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Niall%20Horan/works" class="tag">Niall Horan</a></li><li class='freeforms'><a href="http://archiveofourown.org/tags/Ireland/works" class="tag">Ireland</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Castles/works" class="tag">Castles</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Fake*s*Pretend%20Relationship/works" class="tag">Fake/Pretend Relationship</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Heist/works" class="tag">Heist</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Self-Indulgent/works" class="tag">Self-Indulgent</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Alternate%20Universe/works" class="tag">Alternate Universe</a></li>
+  </ul>
+
+  <!--summary-->	
+    <h6 class="landmark heading">Summary</h6>
+    <blockquote class="userstuff summary" title="summary">
+      <p>Harry and Louis are journalists who stalk movie star Liam Payne to an Irish castle for a weekend. Through a series of convenient misunderstandings, this particular undercover mission involves Harry and Louis pretending to be engaged. It's your classic fake boyfriends AU with a dollop of heist AU, some Ireland, and a healthy serving of "boys who can't sort out their feelings."</p>
+    </blockquote>
+  	
+
+  <!--stats-->
+
+  <dl class="stats" title="stats">
+      <dt>Language:</dt>
+      <dd>English</dd>
+    <dt>Words:</dt>
+    <dd>25,823</dd>
+    <dt>Chapters:</dt>
+    <dd>1/1</dd>
+
+
+
+    <dt>Comments:</dt>
+    <dd><a href="/works/1983942?show_comments=true#comments">32</a></dd>
+    <dt>Kudos:</dt>
+    <dd><a href="/works/1983942#comments">452</a></dd>
+    <dt>Bookmarks:</dt>
+    <dd><a href="/works/1983942/bookmarks">176</a></dd>
+
+    <dt>Hits:</dt>
+    <dd>10420</dd>
+
+  </dl>
+
+
+</li>
+
+        <li class="work blurb group" id="work_855650" role="article">
+  
+
+  <!--title, author, fandom-->
+  <div class="header module">
+
+    <h4 class="heading" title="title">
+      <a href="/works/855650">Abandoned and Found {Ziall}</a>
+      by
+        
+      <!-- do not cache -->
+      <a href="/users/Ninjacookie29/pseuds/obsidanxlashton" class="login author" rel="author">obsidanxlashton (Ninjacookie29)</a>
+
+
+  
+      
+      
+    </h4>
+
+    <h5 class="fandoms heading" title="fandom">
+      <a href="http://archiveofourown.org/tags/One%20Direction%20(Band)/works" class="tag">One Direction (Band)</a>
+      &nbsp;
+    </h5>
+
+    <!--required tags-->
+    <ul class="required-tags">
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="rating-teen rating" title="Teen And Up Audiences"><span class="text">Teen And Up Audiences</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="warning-yes warnings" title="No Archive Warnings Apply, Graphic Depictions Of Violence, Major Character Death"><span class="text">No Archive Warnings Apply, Graphic Depictions Of Violence, Major Character Death</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="category-slash category" title="M/M"><span class="text">M/M</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="complete-yes iswip" title="Complete Work"><span class="text">Complete Work</span></span></a></li>
+</ul>
+    <p class="datetime">18 Jul 2014</p>
+  </div>
+	  
+  <!--warnings again, cast, freeform tags-->
+  <h6 class="landmark heading">Tags</h6>
+  <ul class="tags commas">
+    <li class='warnings'><strong><a href="http://archiveofourown.org/tags/No%20Archive%20Warnings%20Apply/works" class="tag">No Archive Warnings Apply</a></strong></li> <li class='warnings'><strong><a href="http://archiveofourown.org/tags/Graphic%20Depictions%20Of%20Violence/works" class="tag">Graphic Depictions Of Violence</a></strong></li> <li class='warnings'><strong><a href="http://archiveofourown.org/tags/Major%20Character%20Death/works" class="tag">Major Character Death</a></strong></li><li class='relationships'><a href="http://archiveofourown.org/tags/Niall%20Horan*s*Zayn%20Malik/works" class="tag">Niall Horan/Zayn Malik</a></li> <li class='relationships'><a href="http://archiveofourown.org/tags/Harry%20Styles*s*Louis%20Tomlinson/works" class="tag">Harry Styles/Louis Tomlinson</a></li><li class='characters'><a href="http://archiveofourown.org/tags/Niall%20Horan/works" class="tag">Niall Horan</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Zayn%20Malik/works" class="tag">Zayn Malik</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Harry%20Styles/works" class="tag">Harry Styles</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Louis%20Tomlinson/works" class="tag">Louis Tomlinson</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Liam%20Payne/works" class="tag">Liam Payne</a></li><li class='freeforms'><a href="http://archiveofourown.org/tags/Alternate%20Universe%20-%20Vampire/works" class="tag">Alternate Universe - Vampire</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Vampires/works" class="tag">Vampires</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Blood%20Drinking/works" class="tag">Blood Drinking</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Character%20Turned%20Into%20Vampire/works" class="tag">Character Turned Into Vampire</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Vampire%20Turning/works" class="tag">Vampire Turning</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Bloodplay/works" class="tag">Bloodplay</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Fluff%20and%20Angst/works" class="tag">Fluff and Angst</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Hurt%20Niall/works" class="tag">Hurt Niall</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Niall-centric/works" class="tag">Niall-centric</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/police!harry/works" class="tag">police!harry</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/police!louis/works" class="tag">police!louis</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/vampire!niall/works" class="tag">vampire!niall</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/human!zayn/works" class="tag">human!zayn</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Doctor!Liam/works" class="tag">Doctor!Liam</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Angst/works" class="tag">Angst</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/First%20Kiss/works" class="tag">First Kiss</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Frottage/works" class="tag">Frottage</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Major%20Character%20Injury/works" class="tag">Major Character Injury</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Major%20Illness/works" class="tag">Major Illness</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Minor%20Character%20Death/works" class="tag">Minor Character Death</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Character%20Death/works" class="tag">Character Death</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Not%20Really%20Character%20Death/works" class="tag">Not Really Character Death</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Temporary%20Character%20Death/works" class="tag">Temporary Character Death</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Vampire!Zayn/works" class="tag">Vampire!Zayn</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/turned!zayn/works" class="tag">turned!zayn</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/vampire!liam/works" class="tag">vampire!liam</a></li>
+  </ul>
+
+  <!--summary-->	
+    <h6 class="landmark heading">Summary</h6>
+    <blockquote class="userstuff summary" title="summary">
+      <p>Niall dosen’t come to school for a week. Zayn goes over to his house to check up on him, only to discover the unimaginable.</p>
+    </blockquote>
+  	
+
+  <!--stats-->
+
+  <dl class="stats" title="stats">
+      <dt>Language:</dt>
+      <dd>English</dd>
+    <dt>Words:</dt>
+    <dd>23,780</dd>
+    <dt>Chapters:</dt>
+    <dd>10/10</dd>
+
+
+
+    <dt>Comments:</dt>
+    <dd><a href="/works/855650?show_comments=true&amp;view_full_work=true#comments">37</a></dd>
+    <dt>Kudos:</dt>
+    <dd><a href="/works/855650?view_full_work=true#comments">128</a></dd>
+    <dt>Bookmarks:</dt>
+    <dd><a href="/works/855650/bookmarks">19</a></dd>
+
+    <dt>Hits:</dt>
+    <dd>6326</dd>
+
+  </dl>
+
+
+</li>
+
+        <li class="work blurb group" id="work_1974354" role="article">
+  
+
+  <!--title, author, fandom-->
+  <div class="header module">
+
+    <h4 class="heading" title="title">
+      <a href="/works/1974354">Nothing lasts forever, except you and me</a>
+      by
+        
+      <!-- do not cache -->
+      <a href="/users/Paynegerous/pseuds/Paynegerous" class="login author" rel="author">Paynegerous</a>
+
+
+  
+      
+      
+    </h4>
+
+    <h5 class="fandoms heading" title="fandom">
+      <a href="http://archiveofourown.org/tags/One%20Direction%20(Band)/works" class="tag">One Direction (Band)</a>
+      &nbsp;
+    </h5>
+
+    <!--required tags-->
+    <ul class="required-tags">
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="rating-explicit rating" title="Explicit"><span class="text">Explicit</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="warning-choosenotto warnings" title="Choose Not To Use Archive Warnings"><span class="text">Choose Not To Use Archive Warnings</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="category-slash category" title="M/M"><span class="text">M/M</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="complete-yes iswip" title="Complete Work"><span class="text">Complete Work</span></span></a></li>
+</ul>
+    <p class="datetime">17 Jul 2014</p>
+  </div>
+	  
+  <!--warnings again, cast, freeform tags-->
+  <h6 class="landmark heading">Tags</h6>
+  <ul class="tags commas">
+    <li class='warnings'><strong><a href="http://archiveofourown.org/tags/Choose%20Not%20To%20Use%20Archive%20Warnings/works" class="tag">Author Chose Not To Use Archive Warnings</a></strong></li><li class='relationships'><a href="http://archiveofourown.org/tags/Harry%20Styles*s*Louis%20Tomlinson/works" class="tag">Harry Styles/Louis Tomlinson</a></li> <li class='relationships'><a href="http://archiveofourown.org/tags/Zayn%20Malik*s*Liam%20Payne/works" class="tag">Zayn Malik/Liam Payne</a></li> <li class='relationships'><a href="http://archiveofourown.org/tags/Niall%20Horan*s*Gemma%20Styles/works" class="tag">Niall Horan/Gemma Styles</a></li><li class='characters'><a href="http://archiveofourown.org/tags/Harry%20Styles/works" class="tag">Harry Styles</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Louis%20Tomlinson/works" class="tag">Louis Tomlinson</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Zayn%20Malik/works" class="tag">Zayn Malik</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Liam%20Payne/works" class="tag">Liam Payne</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Niall%20Horan/works" class="tag">Niall Horan</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Gemma%20Styles/works" class="tag">Gemma Styles</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Anne%20Cox/works" class="tag">Anne Cox</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Des%20Styles/works" class="tag">Des Styles</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Tom%20Daley/works" class="tag">Tom Daley</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Jay%20Tomlinson/works" class="tag">Jay Tomlinson</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Cal%20Aurand/works" class="tag">Cal Aurand</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Simon%20Cowell/works" class="tag">Simon Cowell</a></li><li class='freeforms'><a href="http://archiveofourown.org/tags/Alternate%20Universe%20-%20Royalty/works" class="tag">Alternate Universe - Royalty</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Fluff/works" class="tag">Fluff</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Angst/works" class="tag">Angst</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Fluff%20and%20Angst/works" class="tag">Fluff and Angst</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Smut/works" class="tag">Smut</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Anal%20Sex/works" class="tag">Anal Sex</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Anal%20Fingering/works" class="tag">Anal Fingering</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Rimming/works" class="tag">Rimming</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Feminization/works" class="tag">Feminization</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Crossdressing%20Kink/works" class="tag">Crossdressing Kink</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Slight%20violence%20but%20not%20really/works" class="tag">Slight violence but not really</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Don&#x27;t%20want%20to%20give%20away%20spoilers%20but%20there&#x27;s%20a%20serious%20injury/works" class="tag">Don&#x27;t want to give away spoilers but there&#x27;s a serious injury</a></li>
+  </ul>
+
+  <!--summary-->	
+    <h6 class="landmark heading">Summary</h6>
+    <blockquote class="userstuff summary" title="summary">
+      <p>“I can’t believe they got married,” Louis says sleepily once he’s curled up into Harry’s chest.</p>
+<p>“Neither can I,” Harry mumbles. “I can’t believe my best friend fell in love with your best friend. I can’t believe how disgustingly happy they are.”</p>
+<p>“We’ve got competition, Haz,” Louis giggles. “We need to be the most disgustingly happy; do you reckon we can beat them?”</p>
+<p>“Oh please,” Harry snorts. “We’re the nation’s sweethearts, babe. Nobody is more disgusting than us.”</p>
+<p> </p>
+<p>Or the one where Louis does what he thinks he has to, Harry becomes King, Zayn gives Louis false hope, Liam wishes Harry would cry less and Niall still can't believe he's married to a princess.</p>
+    </blockquote>
+  	
+
+  <!--stats-->
+
+  <dl class="stats" title="stats">
+      <dt>Language:</dt>
+      <dd>English</dd>
+    <dt>Words:</dt>
+    <dd>34,726</dd>
+    <dt>Chapters:</dt>
+    <dd>1/1</dd>
+
+
+
+    <dt>Comments:</dt>
+    <dd><a href="/works/1974354?show_comments=true#comments">20</a></dd>
+    <dt>Kudos:</dt>
+    <dd><a href="/works/1974354#comments">111</a></dd>
+    <dt>Bookmarks:</dt>
+    <dd><a href="/works/1974354/bookmarks">41</a></dd>
+
+    <dt>Hits:</dt>
+    <dd>4453</dd>
+
+  </dl>
+
+
+</li>
+
+        <li class="work blurb group" id="work_1712570" role="article">
+  
+
+  <!--title, author, fandom-->
+  <div class="header module">
+
+    <h4 class="heading" title="title">
+      <a href="/works/1712570">Misfit Toys</a>
+      by
+        
+      <!-- do not cache -->
+      <a href="/users/Mickey_D/pseuds/Mickey_D" class="login author" rel="author">Mickey_D</a>
+
+
+  
+      
+      
+    </h4>
+
+    <h5 class="fandoms heading" title="fandom">
+      <a href="http://archiveofourown.org/tags/One%20Direction%20(Band)/works" class="tag">One Direction (Band)</a>
+      &nbsp;
+    </h5>
+
+    <!--required tags-->
+    <ul class="required-tags">
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="rating-explicit rating" title="Explicit"><span class="text">Explicit</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="warning-no warnings" title="No Archive Warnings Apply"><span class="text">No Archive Warnings Apply</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="category-multi category" title="F/M, M/M"><span class="text">F/M, M/M</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="complete-yes iswip" title="Complete Work"><span class="text">Complete Work</span></span></a></li>
+</ul>
+    <p class="datetime">17 Jul 2014</p>
+  </div>
+	  
+  <!--warnings again, cast, freeform tags-->
+  <h6 class="landmark heading">Tags</h6>
+  <ul class="tags commas">
+    <li class='warnings'><strong><a href="http://archiveofourown.org/tags/No%20Archive%20Warnings%20Apply/works" class="tag">No Archive Warnings Apply</a></strong></li><li class='relationships'><a href="http://archiveofourown.org/tags/Zayn%20Malik*s*Liam%20Payne/works" class="tag">Zayn Malik/Liam Payne</a></li> <li class='relationships'><a href="http://archiveofourown.org/tags/Harry%20Styles*s*Louis%20Tomlinson/works" class="tag">Harry Styles/Louis Tomlinson</a></li> <li class='relationships'><a href="http://archiveofourown.org/tags/Niall%20Horan*s*Original%20Female%20Character(s)/works" class="tag">Niall Horan/Original Female Character(s)</a></li><li class='characters'><a href="http://archiveofourown.org/tags/Zayn%20Malik/works" class="tag">Zayn Malik</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Liam%20Payne/works" class="tag">Liam Payne</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Harry%20Styles/works" class="tag">Harry Styles</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Louis%20Tomlinson/works" class="tag">Louis Tomlinson</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Niall%20Horan/works" class="tag">Niall Horan</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Original%20Characters/works" class="tag">Original Characters</a></li><li class='freeforms'><a href="http://archiveofourown.org/tags/Strippers%20*a*%20Strip%20Clubs/works" class="tag">Strippers &amp; Strip Clubs</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Pole%20Dancing/works" class="tag">Pole Dancing</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Bars%20and%20Pubs/works" class="tag">Bars and Pubs</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Bartenders/works" class="tag">Bartenders</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Prostitution/works" class="tag">Prostitution</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Prostitute/works" class="tag">Prostitute</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Pet%20Names/works" class="tag">Pet Names</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Puppies/works" class="tag">Puppies</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Stress%20Relief/works" class="tag">Stress Relief</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Sexual%20Content/works" class="tag">Sexual Content</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/camboy!louis/works" class="tag">camboy!louis</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Apartment/works" class="tag">Apartment</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/pull-out%20couch/works" class="tag">pull-out couch</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Fights/works" class="tag">Fights</a></li>
+  </ul>
+
+  <!--summary-->	
+    <h6 class="landmark heading">Summary</h6>
+    <blockquote class="userstuff summary" title="summary">
+      <p>There's five of them: Louis, Harry, Niall, Lila, and Liam. They all live in a smaller, two-bedroom apartment with one bathroom and a regrettably small kitchen. Liam, Niall, and Lila were there first. Liam and Lila were brother and sister, and Niall was dating Lila. Louis had been brought in by Niall after he'd been completely wasted at the bar and without a place to go since he was visiting his sister who wouldn't want a drunken brother in her house after they'd had a bit of a spat earlier. Niall had brought him home and he simply never left. Harry was the most recent addition to their little "family". He was Louis' boyfriend and he was the perfect little "housewife". </p><p>It happens one night when Niall, Louis, and Lila are returning from work. There's a man, a dark alley, and an impulsive choice. Lila brings home another stray, another misfit, but the real question is: will Liam let them keep him?</p>
+    </blockquote>
+  	
+
+  <!--stats-->
+
+  <dl class="stats" title="stats">
+      <dt>Language:</dt>
+      <dd>English</dd>
+    <dt>Words:</dt>
+    <dd>50,342</dd>
+    <dt>Chapters:</dt>
+    <dd>20/20</dd>
+
+
+
+    <dt>Comments:</dt>
+    <dd><a href="/works/1712570?show_comments=true&amp;view_full_work=true#comments">126</a></dd>
+    <dt>Kudos:</dt>
+    <dd><a href="/works/1712570?view_full_work=true#comments">156</a></dd>
+    <dt>Bookmarks:</dt>
+    <dd><a href="/works/1712570/bookmarks">19</a></dd>
+
+    <dt>Hits:</dt>
+    <dd>3426</dd>
+
+  </dl>
+
+
+</li>
+
+        <li class="work blurb group" id="work_1909467" role="article">
+  
+
+  <!--title, author, fandom-->
+  <div class="header module">
+
+    <h4 class="heading" title="title">
+      <a href="/works/1909467">this relationship we're staging</a>
+      by
+        
+      <!-- do not cache -->
+      Anonymous
+
+
+  
+        for <a href="/users/deLILAh/gifts">deLILAh</a>
+      
+      
+    </h4>
+
+    <h5 class="fandoms heading" title="fandom">
+      <a href="http://archiveofourown.org/collections/HL_summerfest/tags/One%20Direction%20(Band)/works" class="tag">One Direction (Band)</a>
+      &nbsp;
+    </h5>
+
+    <!--required tags-->
+    <ul class="required-tags">
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="rating-mature rating" title="Mature"><span class="text">Mature</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="warning-choosenotto warnings" title="Choose Not To Use Archive Warnings, No Archive Warnings Apply"><span class="text">Choose Not To Use Archive Warnings, No Archive Warnings Apply</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="category-multi category" title="M/M, Multi"><span class="text">M/M, Multi</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="complete-yes iswip" title="Complete Work"><span class="text">Complete Work</span></span></a></li>
+</ul>
+    <p class="datetime">17 Jul 2014</p>
+  </div>
+	  
+  <!--warnings again, cast, freeform tags-->
+  <h6 class="landmark heading">Tags</h6>
+  <ul class="tags commas">
+    <li class='warnings'><strong><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Choose%20Not%20To%20Use%20Archive%20Warnings/works" class="tag">Author Chose Not To Use Archive Warnings</a></strong></li> <li class='warnings'><strong><a href="http://archiveofourown.org/collections/HL_summerfest/tags/No%20Archive%20Warnings%20Apply/works" class="tag">No Archive Warnings Apply</a></strong></li><li class='relationships'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Harry%20Styles*s*Louis%20Tomlinson/works" class="tag">Harry Styles/Louis Tomlinson</a></li> <li class='relationships'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Perrie%20Edwards*s*Zayn%20Malik/works" class="tag">Perrie Edwards/Zayn Malik</a></li> <li class='relationships'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Niall%20Horan*s*Barbara%20Palvin/works" class="tag">Niall Horan/Barbara Palvin</a></li><li class='characters'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Harry%20Styles/works" class="tag">Harry Styles</a></li> <li class='characters'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Louis%20Tomlinson/works" class="tag">Louis Tomlinson</a></li> <li class='characters'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Zayn%20Malik/works" class="tag">Zayn Malik</a></li> <li class='characters'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Niall%20Horan/works" class="tag">Niall Horan</a></li> <li class='characters'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Liam%20Payne/works" class="tag">Liam Payne</a></li> <li class='characters'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Simon%20Cowell/works" class="tag">Simon Cowell</a></li> <li class='characters'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Perrie%20Edwards/works" class="tag">Perrie Edwards</a></li> <li class='characters'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Barbara%20Palvin/works" class="tag">Barbara Palvin</a></li><li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Alternate%20Universe/works" class="tag">Alternate Universe</a></li> <li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/OT5%20Friendship/works" class="tag">OT5 Friendship</a></li> <li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Gendered%20Slurs%20because%20Niall/works" class="tag">Gendered Slurs because Niall</a></li> <li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Harry%20pov/works" class="tag">Harry pov</a></li> <li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Louis%20POV/works" class="tag">Louis POV</a></li> <li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Fluff/works" class="tag">Fluff</a></li> <li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/West%20End%20AU/works" class="tag">West End AU</a></li> <li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Actors%20AU/works" class="tag">Actors AU</a></li> <li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Theatre%20AU/works" class="tag">Theatre AU</a></li> <li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Anxiety%20Issues/works" class="tag">Anxiety Issues</a></li> <li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Angst%20due%20to%20lack%20of%20communication/works" class="tag">Angst due to lack of communication</a></li> <li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/fandom%20references/works" class="tag">fandom references</a></li> <li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/mentions%20of%20recreational%20drug%20use/works" class="tag">mentions of recreational drug use</a></li> <li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Ableist%20Language%20to%20reflect%20common%20speech%20patterns/works" class="tag">Ableist Language to reflect common speech patterns</a></li>
+  </ul>
+
+  <!--summary-->	
+    <h6 class="landmark heading">Summary</h6>
+    <blockquote class="userstuff summary" title="summary">
+      <p>Harry looks up from his tea, and his insides twist up a bit, because Louis Tomlinson, Literal Actual Babe of the RSC, is standing there looking disgruntled in sweatpants and a beanie. The urge to make the obvious joke is stronger than his panic-induced nausea. He fixes a wobbly smile on his face and says, “Don’t worry, Louis, the party don’t start till you walk in.” </p><p>(Or West End AU in which Louis is a former Royal Shakespeare Company actor looking for his way back to the top, Harry is an actor best known for his work in unknown bits of experimental theatre and being the darling of London's new age theatre scene, and Simon Cowell is the renowned director who brings the two of them together.</p><p>Also featuring Assistant Director!Zayn, Famous TV Actor!Niall, and Stage Manager!Liam)</p>
+    </blockquote>
+  	
+
+  <!--stats-->
+
+  <dl class="stats" title="stats">
+      <dt>Language:</dt>
+      <dd>English</dd>
+    <dt>Words:</dt>
+    <dd>44,338</dd>
+    <dt>Chapters:</dt>
+    <dd>1/1</dd>
+
+
+    <dt>Collections:</dt>
+    <dd><a href="/works/1909467/collections">1</a></dd>
+
+    <dt>Comments:</dt>
+    <dd><a href="/works/1909467?show_comments=true#comments">48</a></dd>
+    <dt>Kudos:</dt>
+    <dd><a href="/works/1909467#comments">347</a></dd>
+    <dt>Bookmarks:</dt>
+    <dd><a href="/works/1909467/bookmarks">174</a></dd>
+
+    <dt>Hits:</dt>
+    <dd>7958</dd>
+
+  </dl>
+
+
+</li>
+
+        <li class="work blurb group" id="work_1965345" role="article">
+  
+
+  <!--title, author, fandom-->
+  <div class="header module">
+
+    <h4 class="heading" title="title">
+      <a href="/works/1965345">Friends Shouldn't Kiss Me Like You Do</a>
+      by
+        
+      <!-- do not cache -->
+      <a href="/users/crimsontheory/pseuds/crimsontheory" class="login author" rel="author">crimsontheory</a>
+
+
+  
+      
+      
+    </h4>
+
+    <h5 class="fandoms heading" title="fandom">
+      <a href="http://archiveofourown.org/tags/One%20Direction%20(Band)/works" class="tag">One Direction (Band)</a>
+      &nbsp;
+    </h5>
+
+    <!--required tags-->
+    <ul class="required-tags">
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="rating-mature rating" title="Mature"><span class="text">Mature</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="warning-choosenotto warnings" title="Choose Not To Use Archive Warnings"><span class="text">Choose Not To Use Archive Warnings</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="category-slash category" title="M/M"><span class="text">M/M</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="complete-yes iswip" title="Complete Work"><span class="text">Complete Work</span></span></a></li>
+</ul>
+    <p class="datetime">15 Jul 2014</p>
+  </div>
+	  
+  <!--warnings again, cast, freeform tags-->
+  <h6 class="landmark heading">Tags</h6>
+  <ul class="tags commas">
+    <li class='warnings'><strong><a href="http://archiveofourown.org/tags/Choose%20Not%20To%20Use%20Archive%20Warnings/works" class="tag">Author Chose Not To Use Archive Warnings</a></strong></li><li class='relationships'><a href="http://archiveofourown.org/tags/Harry%20Styles*s*Louis%20Tomlinson/works" class="tag">Harry Styles/Louis Tomlinson</a></li> <li class='relationships'><a href="http://archiveofourown.org/tags/slight%20mentions%20of%20zerrie/works" class="tag">slight mentions of zerrie</a></li><li class='characters'><a href="http://archiveofourown.org/tags/Harry%20Styles/works" class="tag">Harry Styles</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Louis%20Tomlinson/works" class="tag">Louis Tomlinson</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Niall%20Horan/works" class="tag">Niall Horan</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Zayn%20Malik/works" class="tag">Zayn Malik</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Liam%20Payne/works" class="tag">Liam Payne</a></li><li class='freeforms'><a href="http://archiveofourown.org/tags/Fluff/works" class="tag">Fluff</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Angst/works" class="tag">Angst</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/a%20teeny%20tiny%20bit%20of%20angst/works" class="tag">a teeny tiny bit of angst</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/like%20blink%20and%20you&#x27;ll%20miss%20it/works" class="tag">like blink and you&#x27;ll miss it</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Pining/works" class="tag">Pining</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Smut/works" class="tag">Smut</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Blow%20Jobs/works" class="tag">Blow Jobs</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/i&#x27;m%20still%20so%20shit%20at%20tagging/works" class="tag">i&#x27;m still so shit at tagging</a></li>
+  </ul>
+
+  <!--summary-->	
+    <h6 class="landmark heading">Summary</h6>
+    <blockquote class="userstuff summary" title="summary">
+      <p>
+  <i>Seconds later the door swings opens. In the doorway stands Louis, and just like the first time, he’s only wearing a towel around his waist and a smile on his face.</i>
+</p>
+<p>
+  <i>“Do you always answer the door in nothing but a towel?” Harry asks.</i>
+</p>
+<p>
+  <i>Louis laughs making the corners of his eyes crinkle and it’s the most beautiful thing Harry has ever seen. He wants to make Louis laugh for the rest of his life. “No, I promise I don’t. You have just happened to catch me the only two times I have. But hey, at least this time I’m not dripping water all over the carpet.” Unfortunately, Harry thinks.</i>
+</p>
+<p> </p>
+<p>Or the one where Harry and Louis live in the same building.</p>
+    </blockquote>
+  	
+
+  <!--stats-->
+
+  <dl class="stats" title="stats">
+      <dt>Language:</dt>
+      <dd>English</dd>
+    <dt>Words:</dt>
+    <dd>19,394</dd>
+    <dt>Chapters:</dt>
+    <dd>1/1</dd>
+
+
+
+    <dt>Comments:</dt>
+    <dd><a href="/works/1965345?show_comments=true#comments">2</a></dd>
+    <dt>Kudos:</dt>
+    <dd><a href="/works/1965345#comments">121</a></dd>
+    <dt>Bookmarks:</dt>
+    <dd><a href="/works/1965345/bookmarks">34</a></dd>
+
+    <dt>Hits:</dt>
+    <dd>4344</dd>
+
+  </dl>
+
+
+</li>
+
+        <li class="work blurb group" id="work_939267" role="article">
+  
+
+  <!--title, author, fandom-->
+  <div class="header module">
+
+    <h4 class="heading" title="title">
+      <a href="/works/939267">Don't Let Me Go</a>
+      by
+        
+      <!-- do not cache -->
+      <a href="/users/Bethahnay/pseuds/Bethahnay" class="login author" rel="author">Bethahnay</a>
+
+
+  
+      
+      
+    </h4>
+
+    <h5 class="fandoms heading" title="fandom">
+      <a href="http://archiveofourown.org/tags/One%20Direction%20(Band)/works" class="tag">One Direction (Band)</a>
+      &nbsp;
+    </h5>
+
+    <!--required tags-->
+    <ul class="required-tags">
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="rating-mature rating" title="Mature"><span class="text">Mature</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="warning-yes warnings" title="Choose Not To Use Archive Warnings, Rape/Non-Con"><span class="text">Choose Not To Use Archive Warnings, Rape/Non-Con</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="category-slash category" title="M/M"><span class="text">M/M</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="complete-yes iswip" title="Complete Work"><span class="text">Complete Work</span></span></a></li>
+</ul>
+    <p class="datetime">15 Jul 2014</p>
+  </div>
+	  
+  <!--warnings again, cast, freeform tags-->
+  <h6 class="landmark heading">Tags</h6>
+  <ul class="tags commas">
+    <li class='warnings'><strong><a href="http://archiveofourown.org/tags/Choose%20Not%20To%20Use%20Archive%20Warnings/works" class="tag">Author Chose Not To Use Archive Warnings</a></strong></li> <li class='warnings'><strong><a href="http://archiveofourown.org/tags/Rape*s*Non-Con/works" class="tag">Rape/Non-Con</a></strong></li><li class='relationships'><a href="http://archiveofourown.org/tags/Harry%20Styles*s*Louis%20Tomlinson/works" class="tag">Harry Styles/Louis Tomlinson</a></li><li class='characters'><a href="http://archiveofourown.org/tags/Harry%20Styles/works" class="tag">Harry Styles</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Louis%20Tomlinson/works" class="tag">Louis Tomlinson</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Zayn%20Malik/works" class="tag">Zayn Malik</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Liam%20Payne/works" class="tag">Liam Payne</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Niall%20Horan/works" class="tag">Niall Horan</a></li><li class='freeforms'><a href="http://archiveofourown.org/tags/Non-Graphic%20Rape*s*Non-Con/works" class="tag">Non-Graphic Rape/Non-Con</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Depression/works" class="tag">Depression</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Angst/works" class="tag">Angst</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Fluff/works" class="tag">Fluff</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Smut/works" class="tag">Smut</a></li>
+  </ul>
+
+  <!--summary-->	
+    <h6 class="landmark heading">Summary</h6>
+    <blockquote class="userstuff summary" title="summary">
+      <p>Louis Tomlinson isn't your average 17 year old boy; wearing glasses, having ADHD and being gay isn't a walk in the park, especially in school. He's bullied almost every single day and crying himself to sleep becomes a nightly routine for the depressed boy. Just as things were taking a turn for the worse, a curly haired and green eyed boy by the name of Harry moves into town--ending up flipping Louis' world around completely.</p><p>Or the one where Louis is bullied and Harry is his knight in shining armor but dressed in skin tight jeans and band t-shirts.</p>
+    </blockquote>
+  	
+    <h6 class="landmark heading">Series</h6>
+    <ul class="series">
+        <li>
+          Part <strong>1</strong> of <a href="/series/69123">Give All or Take All</a>
+        </li>
+    </ul>
+
+  <!--stats-->
+
+  <dl class="stats" title="stats">
+      <dt>Language:</dt>
+      <dd>English</dd>
+    <dt>Words:</dt>
+    <dd>55,650</dd>
+    <dt>Chapters:</dt>
+    <dd>30/30</dd>
+
+
+
+    <dt>Comments:</dt>
+    <dd><a href="/works/939267?show_comments=true&amp;view_full_work=true#comments">25</a></dd>
+    <dt>Kudos:</dt>
+    <dd><a href="/works/939267?view_full_work=true#comments">122</a></dd>
+    <dt>Bookmarks:</dt>
+    <dd><a href="/works/939267/bookmarks">32</a></dd>
+
+    <dt>Hits:</dt>
+    <dd>5248</dd>
+
+  </dl>
+
+
+</li>
+
+        <li class="work blurb group" id="work_1715012" role="article">
+  
+
+  <!--title, author, fandom-->
+  <div class="header module">
+
+    <h4 class="heading" title="title">
+      <a href="/works/1715012">and the sun shines upon your face</a>
+      by
+        
+      <!-- do not cache -->
+      <a href="/users/rosegarden/pseuds/rosegarden" class="login author" rel="author">rosegarden</a>
+
+
+  
+      
+      
+    </h4>
+
+    <h5 class="fandoms heading" title="fandom">
+      <a href="http://archiveofourown.org/tags/One%20Direction%20(Band)/works" class="tag">One Direction (Band)</a>
+      &nbsp;
+    </h5>
+
+    <!--required tags-->
+    <ul class="required-tags">
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="rating-notrated rating" title="Not Rated"><span class="text">Not Rated</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="warning-choosenotto warnings" title="Choose Not To Use Archive Warnings, No Archive Warnings Apply"><span class="text">Choose Not To Use Archive Warnings, No Archive Warnings Apply</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="category-slash category" title="M/M"><span class="text">M/M</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="complete-yes iswip" title="Complete Work"><span class="text">Complete Work</span></span></a></li>
+</ul>
+    <p class="datetime">15 Jul 2014</p>
+  </div>
+	  
+  <!--warnings again, cast, freeform tags-->
+  <h6 class="landmark heading">Tags</h6>
+  <ul class="tags commas">
+    <li class='warnings'><strong><a href="http://archiveofourown.org/tags/Choose%20Not%20To%20Use%20Archive%20Warnings/works" class="tag">Author Chose Not To Use Archive Warnings</a></strong></li> <li class='warnings'><strong><a href="http://archiveofourown.org/tags/No%20Archive%20Warnings%20Apply/works" class="tag">No Archive Warnings Apply</a></strong></li><li class='relationships'><a href="http://archiveofourown.org/tags/Harry%20Styles*s*Louis%20Tomlinson/works" class="tag">Harry Styles/Louis Tomlinson</a></li><li class='characters'><a href="http://archiveofourown.org/tags/Harry%20Styles/works" class="tag">Harry Styles</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Louis%20Tomlinson/works" class="tag">Louis Tomlinson</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Niall%20Horan/works" class="tag">Niall Horan</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Liam%20Payne/works" class="tag">Liam Payne</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Zayn%20Malik/works" class="tag">Zayn Malik</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Anne%20Cox/works" class="tag">Anne Cox</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Jay%20Tomlinson/works" class="tag">Jay Tomlinson</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Paul%20Higgins/works" class="tag">Paul Higgins</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Lou%20Teasdale/works" class="tag">Lou Teasdale</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/almost%20everyone%20makes%20an%20appeareance%20at%20some%20point/works" class="tag">almost everyone makes an appeareance at some point</a></li><li class='freeforms'><a href="http://archiveofourown.org/tags/Mpreg/works" class="tag">Mpreg</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Mpreg%20Harry/works" class="tag">Mpreg Harry</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Unplanned%20Pregnancy/works" class="tag">Unplanned Pregnancy</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/mpreg%20month/works" class="tag">mpreg month</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Coming%20Out/works" class="tag">Coming Out</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/some%20hurt*s*comfort%20at%20the%20beginning/works" class="tag">some hurt/comfort at the beginning</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/but%20nothing%20major/works" class="tag">but nothing major</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Medical%20Inaccuracies/works" class="tag">Medical Inaccuracies</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Established%20Relationship/works" class="tag">Established Relationship</a></li>
+  </ul>
+
+  <!--summary-->	
+    <h6 class="landmark heading">Summary</h6>
+    <blockquote class="userstuff summary" title="summary">
+      <p>“It's just – it feels weird. To tell her that her twenty year old closeted son got knocked up in the middle of a stadium worldwide tour.”<br />Louis laughs and Harry's heart squeezes at that beautiful sound. “Well it does sound weird when you put it like that.”<br />“I don't 'put it like that'. It's the truth.”</p><p>or</p><p>the one where Harry really, really likes making plans but plans don't really like him, Louis is an overprotective-future-dad-to-be and Niall, Liam and Zayn race to be the godfather.</p>
+    </blockquote>
+  	
+
+  <!--stats-->
+
+  <dl class="stats" title="stats">
+      <dt>Language:</dt>
+      <dd>English</dd>
+    <dt>Words:</dt>
+    <dd>32,585</dd>
+    <dt>Chapters:</dt>
+    <dd>6/6</dd>
+
+
+
+    <dt>Comments:</dt>
+    <dd><a href="/works/1715012?show_comments=true&amp;view_full_work=true#comments">56</a></dd>
+    <dt>Kudos:</dt>
+    <dd><a href="/works/1715012?view_full_work=true#comments">167</a></dd>
+    <dt>Bookmarks:</dt>
+    <dd><a href="/works/1715012/bookmarks">35</a></dd>
+
+    <dt>Hits:</dt>
+    <dd>4930</dd>
+
+  </dl>
+
+
+</li>
+
+        <li class="work blurb group" id="work_1184307" role="article">
+  
+
+  <!--title, author, fandom-->
+  <div class="header module">
+
+    <h4 class="heading" title="title">
+      <a href="/works/1184307">A Darkness That We Knew</a>
+      by
+        
+      <!-- do not cache -->
+      <a href="/users/catholicschoolgirl/pseuds/catholicschoolgirl" class="login author" rel="author">catholicschoolgirl</a>
+
+
+  
+      
+      
+    </h4>
+
+    <h5 class="fandoms heading" title="fandom">
+      <a href="http://archiveofourown.org/tags/One%20Direction%20(Band)/works" class="tag">One Direction (Band)</a>
+      &nbsp;
+    </h5>
+
+    <!--required tags-->
+    <ul class="required-tags">
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="rating-explicit rating" title="Explicit"><span class="text">Explicit</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="warning-choosenotto warnings" title="Choose Not To Use Archive Warnings"><span class="text">Choose Not To Use Archive Warnings</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="category-slash category" title="M/M"><span class="text">M/M</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="complete-yes iswip" title="Complete Work"><span class="text">Complete Work</span></span></a></li>
+</ul>
+    <p class="datetime">15 Jul 2014</p>
+  </div>
+	  
+  <!--warnings again, cast, freeform tags-->
+  <h6 class="landmark heading">Tags</h6>
+  <ul class="tags commas">
+    <li class='warnings'><strong><a href="http://archiveofourown.org/tags/Choose%20Not%20To%20Use%20Archive%20Warnings/works" class="tag">Author Chose Not To Use Archive Warnings</a></strong></li><li class='relationships'><a href="http://archiveofourown.org/tags/Zayn%20Malik*s*Harry%20Styles/works" class="tag">Zayn Malik/Harry Styles</a></li> <li class='relationships'><a href="http://archiveofourown.org/tags/Eleanor%20Calder*s*Louis%20Tomlinson/works" class="tag">Eleanor Calder/Louis Tomlinson</a></li> <li class='relationships'><a href="http://archiveofourown.org/tags/Harry%20Styles*s*Louis%20Tomlinson/works" class="tag">Harry Styles/Louis Tomlinson</a></li> <li class='relationships'><a href="http://archiveofourown.org/tags/Zayn%20Malik*s*Ben%20Winston/works" class="tag">Zayn Malik/Ben Winston</a></li> <li class='relationships'><a href="http://archiveofourown.org/tags/Zayn%20Malik*s*Louis%20Tomlinson/works" class="tag">Zayn Malik/Louis Tomlinson</a></li><li class='characters'><a href="http://archiveofourown.org/tags/Harry%20Styles/works" class="tag">Harry Styles</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Zayn%20Malik/works" class="tag">Zayn Malik</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Louis%20Tomlinson/works" class="tag">Louis Tomlinson</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Eleanor%20Calder/works" class="tag">Eleanor Calder</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Liam%20Payne/works" class="tag">Liam Payne</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Niall%20Horan/works" class="tag">Niall Horan</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Nick%20Grimshaw/works" class="tag">Nick Grimshaw</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Justin%20Bieber/works" class="tag">Justin Bieber</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Perrie%20Edwards/works" class="tag">Perrie Edwards</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Ben%20Winston/works" class="tag">Ben Winston</a></li><li class='freeforms'><a href="http://archiveofourown.org/tags/Alternate%20Universe%20-%20College*s*University/works" class="tag">Alternate Universe - College/University</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Angst/works" class="tag">Angst</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Emotional%20Hurt*s*Comfort/works" class="tag">Emotional Hurt/Comfort</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Emotional%20Manipulation/works" class="tag">Emotional Manipulation</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Explicit%20Sexual%20Content/works" class="tag">Explicit Sexual Content</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Recreational%20Drug%20Use/works" class="tag">Recreational Drug Use</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Kink%20Exploration/works" class="tag">Kink Exploration</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Consensual%20Violence/works" class="tag">Consensual Violence</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Bloodplay/works" class="tag">Bloodplay</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Watersports/works" class="tag">Watersports</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Daddy%20Kink/works" class="tag">Daddy Kink</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/BDSM/works" class="tag">BDSM</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Asphyxiation/works" class="tag">Asphyxiation</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Breathplay/works" class="tag">Breathplay</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Infidelity/works" class="tag">Infidelity</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Feminization/works" class="tag">Feminization</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Ableist%20Language/works" class="tag">Ableist Language</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Implied*s*Referenced%20Alcohol%20Abuse*s*Alcoholism/works" class="tag">Implied/Referenced Alcohol Abuse/Alcoholism</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Moral%20Bankruptcy/works" class="tag">Moral Bankruptcy</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Felching/works" class="tag">Felching</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/a%20sex%20act%20I%20don&#x27;t%20even%20know%20the%20word%20for/works" class="tag">a sex act I don&#x27;t even know the word for</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Just%20Sex/works" class="tag">Just Sex</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Lots%20of%20it/works" class="tag">Lots of it</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Shitty%20people%20doing%20shitty%20things/works" class="tag">Shitty people doing shitty things</a></li>
+  </ul>
+
+  <!--summary-->	
+    <h6 class="landmark heading">Summary</h6>
+    <blockquote class="userstuff summary" title="summary">
+      <p>Harry and Zayn get engaged. Everyone around them is (understandably) concerned.</p>
+<p>Sequel to <a href="http://archiveofourown.org/works/982930/chapters/1936276">So We Are History</a>.</p>
+    </blockquote>
+  	
+    <h6 class="landmark heading">Series</h6>
+    <ul class="series">
+        <li>
+          Part <strong>2</strong> of <a href="/series/68176">Tears Dry On Their Own Universe</a>
+        </li>
+    </ul>
+
+  <!--stats-->
+
+  <dl class="stats" title="stats">
+      <dt>Language:</dt>
+      <dd>English</dd>
+    <dt>Words:</dt>
+    <dd>103,376</dd>
+    <dt>Chapters:</dt>
+    <dd>11/11</dd>
+
+
+
+    <dt>Comments:</dt>
+    <dd><a href="/works/1184307?show_comments=true&amp;view_full_work=true#comments">252</a></dd>
+    <dt>Kudos:</dt>
+    <dd><a href="/works/1184307?view_full_work=true#comments">214</a></dd>
+    <dt>Bookmarks:</dt>
+    <dd><a href="/works/1184307/bookmarks">56</a></dd>
+
+    <dt>Hits:</dt>
+    <dd>9601</dd>
+
+  </dl>
+
+
+</li>
+
+        <li class="work blurb group" id="work_1551764" role="article">
+  
+
+  <!--title, author, fandom-->
+  <div class="header module">
+
+    <h4 class="heading" title="title">
+      <a href="/works/1551764">Allies in Heaven, Comrades in Hell</a>
+      by
+        
+      <!-- do not cache -->
+      <a href="/users/rockinaintnowalkinthepark/pseuds/rockinaintnowalkinthepark" class="login author" rel="author">rockinaintnowalkinthepark</a>
+
+
+  
+      
+      
+    </h4>
+
+    <h5 class="fandoms heading" title="fandom">
+      <a href="http://archiveofourown.org/tags/One%20Direction%20(Band)/works" class="tag">One Direction (Band)</a>
+      &nbsp;
+    </h5>
+
+    <!--required tags-->
+    <ul class="required-tags">
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="rating-explicit rating" title="Explicit"><span class="text">Explicit</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="warning-yes warnings" title="Graphic Depictions Of Violence"><span class="text">Graphic Depictions Of Violence</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="category-slash category" title="M/M"><span class="text">M/M</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="complete-yes iswip" title="Complete Work"><span class="text">Complete Work</span></span></a></li>
+</ul>
+    <p class="datetime">14 Jul 2014</p>
+  </div>
+	  
+  <!--warnings again, cast, freeform tags-->
+  <h6 class="landmark heading">Tags</h6>
+  <ul class="tags commas">
+    <li class='warnings'><strong><a href="http://archiveofourown.org/tags/Graphic%20Depictions%20Of%20Violence/works" class="tag">Graphic Depictions Of Violence</a></strong></li><li class='relationships'><a href="http://archiveofourown.org/tags/Harry%20Styles*s*Louis%20Tomlinson/works" class="tag">Harry Styles/Louis Tomlinson</a></li> <li class='relationships'><a href="http://archiveofourown.org/tags/Zayn%20Malik*s*Liam%20Payne/works" class="tag">Zayn Malik/Liam Payne</a></li><li class='characters'><a href="http://archiveofourown.org/tags/Harry%20Styles/works" class="tag">Harry Styles</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Louis%20Tomlinson/works" class="tag">Louis Tomlinson</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Niall%20Horan/works" class="tag">Niall Horan</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Zayn%20Malik/works" class="tag">Zayn Malik</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Liam%20Payne/works" class="tag">Liam Payne</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/1d%20-%20family%20and%20friends/works" class="tag">1d - family and friends</a></li><li class='freeforms'><a href="http://archiveofourown.org/tags/louis%20has%20terrible%20life-ruining%20anxiety/works" class="tag">louis has terrible life-ruining anxiety</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/harry%20is%20a%20giant%20embarrassing%20NERD%20(what%20else%20is%20new*q*)/works" class="tag">harry is a giant embarrassing NERD (what else is new?)</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/and%20they%E2%80%99re%20both%20ginormous%20romantic%20saps%20(also%20what%20else%20is%20new*q*)/works" class="tag">and they’re both ginormous romantic saps (also what else is new?)</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/but%20there%E2%80%99s%20so%20much%20angst%20that%20i%20needed%20reviving%20three%20times%20while%20writing/works" class="tag">but there’s so much angst that i needed reviving three times while writing</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/if%20you%20don%E2%80%99t%20like%20being%20mad%20at%20characters%20you%20might%20want%20to%20run%20while%20you%20still%20can/works" class="tag">if you don’t like being mad at characters you might want to run while you still can</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/lourry%20and%20ziam%20make%20up%20the%20main%20pairings/works" class="tag">lourry and ziam make up the main pairings</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/but%20there%E2%80%99s%20a%20literal%20smidge%20of%20halvin%20cos%20GET%20IT%20NIALL/works" class="tag">but there’s a literal smidge of halvin cos GET IT NIALL</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/also%20if%20you%20don%E2%80%99t%20speak%20even%20a%20little%20bit%20of%20urdu%20i%20feel%20bad%20for%20you%20son/works" class="tag">also if you don’t speak even a little bit of urdu i feel bad for you son</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/i%20got%2099%20problems/works" class="tag">i got 99 problems</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/learning%20a%20whole%20other%20language%20for%20fic%20writing%20purposes%20was%2030%20of%20them/works" class="tag">learning a whole other language for fic writing purposes was 30 of them</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/i%20watched%20so%20many%20bollywood%20movies/works" class="tag">i watched so many bollywood movies</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/sooooo%20many/works" class="tag">sooooo many</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/look%20there%E2%80%99s%20an%20unbelievable%20lack%20of%20racial*s*class*s*religious%20exploration%20in%20this%20fandom/works" class="tag">look there’s an unbelievable lack of racial/class/religious exploration in this fandom</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/so%20i%20decided%20to%20fix%20that/works" class="tag">so i decided to fix that</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/also%20there%E2%80%99s%20a%20lot%20of%20Spice%20Girls%20references%20from%20beginning%20to%20end/works" class="tag">also there’s a lot of Spice Girls references from beginning to end</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/and%20a%20lot%20of%20sadness/works" class="tag">and a lot of sadness</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/both%20on%20the%20story%E2%80%99s%20part%20and%20mine/works" class="tag">both on the story’s part and mine</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/this%20whole%20thing%20was%20a%20mistake/works" class="tag">this whole thing was a mistake</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/it%20was%20never%20supposed%20to%20be%20a%20novel/works" class="tag">it was never supposed to be a novel</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/life%E2%80%99s%20biggest%20regret/works" class="tag">life’s biggest regret</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/over%20a%20year%20in%20the%20making/works" class="tag">over a year in the making</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/god%20bless%20us%20every%20one/works" class="tag">god bless us every one</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/time%20for%20actual%20real%20tags%20okay/works" class="tag">time for actual real tags okay</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Angst/works" class="tag">Angst</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Secret%20Relationship/works" class="tag">Secret Relationship</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Catholic%20School/works" class="tag">Catholic School</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Alternate%20Universe%20-%20High%20School/works" class="tag">Alternate Universe - High School</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/AU/works" class="tag">AU</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/First%20Love/works" class="tag">First Love</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Friends%20to%20Lovers/works" class="tag">Friends to Lovers</a></li>
+  </ul>
+
+  <!--summary-->	
+    <h6 class="landmark heading">Summary</h6>
+    <blockquote class="userstuff summary" title="summary">
+      <p>A Catholic school!AU where Louis is finishing sixth form and will definitely be famous someday if Harry has something to say about it, Liam is the racist homophobe that Zayn is dreadfully in love with, and Niall teaches guitar. ~ "Louis remembers it from a few weeks before - Harry had told him that when he loves someone, he loves with every ounce of his being, and it often hurts to feel it. Louis hadn’t really understood what he’d meant until now."</p><p>(Soon available in Spanish and audio podcast for reading disabled people)</p>
+    </blockquote>
+  	
+
+  <!--stats-->
+
+  <dl class="stats" title="stats">
+      <dt>Language:</dt>
+      <dd>English</dd>
+    <dt>Words:</dt>
+    <dd>265,594</dd>
+    <dt>Chapters:</dt>
+    <dd>13/13</dd>
+
+
+
+    <dt>Comments:</dt>
+    <dd><a href="/works/1551764?show_comments=true&amp;view_full_work=true#comments">31</a></dd>
+    <dt>Kudos:</dt>
+    <dd><a href="/works/1551764?view_full_work=true#comments">111</a></dd>
+    <dt>Bookmarks:</dt>
+    <dd><a href="/works/1551764/bookmarks">42</a></dd>
+
+    <dt>Hits:</dt>
+    <dd>3116</dd>
+
+  </dl>
+
+
+</li>
+
+        <li class="work blurb group" id="work_1951290" role="article">
+  
+
+  <!--title, author, fandom-->
+  <div class="header module">
+
+    <h4 class="heading" title="title">
+      <a href="/works/1951290">So Darling, Just Say You’ll Stay Right by My Side</a>
+      by
+        
+      <!-- do not cache -->
+      Anonymous
+
+
+  
+        for <a href="/users/impetuous/gifts">impetuous</a>
+      
+      
+    </h4>
+
+    <h5 class="fandoms heading" title="fandom">
+      <a href="http://archiveofourown.org/tags/One%20Direction%20(Band)/works" class="tag">One Direction (Band)</a>
+      &nbsp;
+    </h5>
+
+    <!--required tags-->
+    <ul class="required-tags">
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="rating-explicit rating" title="Explicit"><span class="text">Explicit</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="warning-no warnings" title="No Archive Warnings Apply"><span class="text">No Archive Warnings Apply</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="category-slash category" title="M/M"><span class="text">M/M</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="complete-yes iswip" title="Complete Work"><span class="text">Complete Work</span></span></a></li>
+</ul>
+    <p class="datetime">13 Jul 2014</p>
+  </div>
+	  
+  <!--warnings again, cast, freeform tags-->
+  <h6 class="landmark heading">Tags</h6>
+  <ul class="tags commas">
+    <li class='warnings'><strong><a href="http://archiveofourown.org/tags/No%20Archive%20Warnings%20Apply/works" class="tag">No Archive Warnings Apply</a></strong></li><li class='relationships'><a href="http://archiveofourown.org/tags/Harry%20Styles*s*Louis%20Tomlinson/works" class="tag">Harry Styles/Louis Tomlinson</a></li><li class='characters'><a href="http://archiveofourown.org/tags/Harry%20Styles/works" class="tag">Harry Styles</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Louis%20Tomlinson/works" class="tag">Louis Tomlinson</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Zayn%20Malik/works" class="tag">Zayn Malik</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Niall%20Horan/works" class="tag">Niall Horan</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Liam%20Payne/works" class="tag">Liam Payne</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/Cher%20Lloyd/works" class="tag">Cher Lloyd</a></li> <li class='characters'><a href="http://archiveofourown.org/tags/a%20bunch%20of%20Louis&#x27;%20family%20members/works" class="tag">a bunch of Louis&#x27; family members</a></li><li class='freeforms'><a href="http://archiveofourown.org/tags/Alternate%20Universe%20-%20Police/works" class="tag">Alternate Universe - Police</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/though%20there%20is%20an%20embarrassing%20lack%20of%20actual%20police%20stuff/works" class="tag">though there is an embarrassing lack of actual police stuff</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/Fluff/works" class="tag">Fluff</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/thigh%20fucking/works" class="tag">thigh fucking</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/just%20obscene%20amounts%20of%20fluff/works" class="tag">just obscene amounts of fluff</a></li> <li class='freeforms'><a href="http://archiveofourown.org/tags/also%20like%20three%20hints%20at%20background%20Ziall/works" class="tag">also like three hints at background Ziall</a></li>
+  </ul>
+
+  <!--summary-->	
+    <h6 class="landmark heading">Summary</h6>
+    <blockquote class="userstuff summary" title="summary">
+      <p>Harry is visibly buzzing with excitement as they get into the police car, and Louis laughs, reaches out to put a hand on Harry’s knee and try and calm him a bit. “Relax, McClane, we’re just stopping in on a few of the local businesses to say hello. No need to sit with one finger on the trigger.”</p><p>“I don’t think you’ll need to worry about me being trigger-happy, Lou,” Harry says with another one of his megawatt grins, patting the water pistol holstered by his hip.</p><p>[AU where Louis is the chief of police in a small sea-side town and Harry is his new deputy who's a bit of a pacifist and a lot wonderful.]</p>
+    </blockquote>
+  	
+
+  <!--stats-->
+
+  <dl class="stats" title="stats">
+      <dt>Language:</dt>
+      <dd>English</dd>
+    <dt>Words:</dt>
+    <dd>28,478</dd>
+    <dt>Chapters:</dt>
+    <dd>1/1</dd>
+
+
+    <dt>Collections:</dt>
+    <dd><a href="/works/1951290/collections">1</a></dd>
+
+    <dt>Comments:</dt>
+    <dd><a href="/works/1951290?show_comments=true#comments">64</a></dd>
+    <dt>Kudos:</dt>
+    <dd><a href="/works/1951290#comments">689</a></dd>
+    <dt>Bookmarks:</dt>
+    <dd><a href="/works/1951290/bookmarks">253</a></dd>
+
+    <dt>Hits:</dt>
+    <dd>18260</dd>
+
+  </dl>
+
+
+</li>
+
+        <li class="work blurb group" id="work_1951029" role="article">
+  
+
+  <!--title, author, fandom-->
+  <div class="header module">
+
+    <h4 class="heading" title="title">
+      <a href="/works/1951029">hiding from you in this skin</a>
+      by
+        
+      <!-- do not cache -->
+      Anonymous
+
+
+  
+        for <a href="/users/luois/gifts">luois</a>
+      
+      
+    </h4>
+
+    <h5 class="fandoms heading" title="fandom">
+      <a href="http://archiveofourown.org/collections/HL_summerfest/tags/One%20Direction%20(Band)/works" class="tag">One Direction (Band)</a>
+      &nbsp;
+    </h5>
+
+    <!--required tags-->
+    <ul class="required-tags">
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="rating-explicit rating" title="Explicit"><span class="text">Explicit</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="warning-no warnings" title="No Archive Warnings Apply"><span class="text">No Archive Warnings Apply</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="category-slash category" title="M/M"><span class="text">M/M</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="complete-yes iswip" title="Complete Work"><span class="text">Complete Work</span></span></a></li>
+</ul>
+    <p class="datetime">14 Jul 2014</p>
+  </div>
+	  
+  <!--warnings again, cast, freeform tags-->
+  <h6 class="landmark heading">Tags</h6>
+  <ul class="tags commas">
+    <li class='warnings'><strong><a href="http://archiveofourown.org/collections/HL_summerfest/tags/No%20Archive%20Warnings%20Apply/works" class="tag">No Archive Warnings Apply</a></strong></li><li class='relationships'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Harry%20Styles*s*Louis%20Tomlinson/works" class="tag">Harry Styles/Louis Tomlinson</a></li> <li class='relationships'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Harry%20Styles*s*Taylor%20Swift/works" class="tag">Harry Styles/Taylor Swift</a></li><li class='characters'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Harry%20Styles/works" class="tag">Harry Styles</a></li> <li class='characters'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Louis%20Tomlinson/works" class="tag">Louis Tomlinson</a></li> <li class='characters'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Liam%20Payne/works" class="tag">Liam Payne</a></li> <li class='characters'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Niall%20Horan/works" class="tag">Niall Horan</a></li> <li class='characters'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Zayn%20Malik/works" class="tag">Zayn Malik</a></li> <li class='characters'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Danny%20Riach/works" class="tag">Danny Riach</a></li> <li class='characters'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Taylor%20Swift/works" class="tag">Taylor Swift</a></li><li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Arguing/works" class="tag">Arguing</a></li> <li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Rimming/works" class="tag">Rimming</a></li> <li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Miscommunication/works" class="tag">Miscommunication</a></li> <li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Drunk%20Sex/works" class="tag">Drunk Sex</a></li> <li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Facials/works" class="tag">Facials</a></li> <li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Jealousy/works" class="tag">Jealousy</a></li> <li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Anal%20Fingering/works" class="tag">Anal Fingering</a></li> <li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Misunderstandings/works" class="tag">Misunderstandings</a></li> <li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Canon%20Compliant/works" class="tag">Canon Compliant</a></li>
+  </ul>
+
+  <!--summary-->	
+    <h6 class="landmark heading">Summary</h6>
+    <blockquote class="userstuff summary" title="summary">
+      <p>As soon as the words leave his mouth, he wants to snatch them back. It’s everything he wanted to say, everything he felt ever since he heard her name, ever since he saw Harry’s face when he’d looked at her; and it didn’t have to be her, god knows it could’ve been anyone else, anyone on the planet, and Louis still would’ve wanted to destroy them.</p>
+    </blockquote>
+  	
+
+  <!--stats-->
+
+  <dl class="stats" title="stats">
+      <dt>Language:</dt>
+      <dd>English</dd>
+    <dt>Words:</dt>
+    <dd>25,035</dd>
+    <dt>Chapters:</dt>
+    <dd>1/1</dd>
+
+
+    <dt>Collections:</dt>
+    <dd><a href="/works/1951029/collections">1</a></dd>
+
+    <dt>Comments:</dt>
+    <dd><a href="/works/1951029?show_comments=true#comments">20</a></dd>
+    <dt>Kudos:</dt>
+    <dd><a href="/works/1951029#comments">134</a></dd>
+    <dt>Bookmarks:</dt>
+    <dd><a href="/works/1951029/bookmarks">46</a></dd>
+
+    <dt>Hits:</dt>
+    <dd>3039</dd>
+
+  </dl>
+
+
+</li>
+
+        <li class="work blurb group" id="work_1949628" role="article">
+  
+
+  <!--title, author, fandom-->
+  <div class="header module">
+
+    <h4 class="heading" title="title">
+      <a href="/works/1949628">Other Habits (Make Your Pleasure of Your Pains)</a>
+      by
+        
+      <!-- do not cache -->
+      Anonymous
+
+
+  
+        for <a href="/users/wayfared/gifts">wayfared</a>
+      
+      
+    </h4>
+
+    <h5 class="fandoms heading" title="fandom">
+      <a href="http://archiveofourown.org/collections/HL_summerfest/tags/One%20Direction%20(Band)/works" class="tag">One Direction (Band)</a>
+      &nbsp;
+    </h5>
+
+    <!--required tags-->
+    <ul class="required-tags">
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="rating-teen rating" title="Teen And Up Audiences"><span class="text">Teen And Up Audiences</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="warning-no warnings" title="No Archive Warnings Apply"><span class="text">No Archive Warnings Apply</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="category-slash category" title="M/M"><span class="text">M/M</span></span></a></li>
+<li> <a href="/help/symbols-key.html" aria-controls="#modal" class="help symbol question modal" title="Symbols key"><span class="complete-yes iswip" title="Complete Work"><span class="text">Complete Work</span></span></a></li>
+</ul>
+    <p class="datetime">13 Jul 2014</p>
+  </div>
+	  
+  <!--warnings again, cast, freeform tags-->
+  <h6 class="landmark heading">Tags</h6>
+  <ul class="tags commas">
+    <li class='warnings'><strong><a href="http://archiveofourown.org/collections/HL_summerfest/tags/No%20Archive%20Warnings%20Apply/works" class="tag">No Archive Warnings Apply</a></strong></li><li class='relationships'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Harry%20Styles*s*Louis%20Tomlinson/works" class="tag">Harry Styles/Louis Tomlinson</a></li> <li class='relationships'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Zayn%20Malik*s*Liam%20Payne/works" class="tag">Zayn Malik/Liam Payne</a></li><li class='characters'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Harry%20Styles/works" class="tag">Harry Styles</a></li> <li class='characters'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Louis%20Tomlinson/works" class="tag">Louis Tomlinson</a></li> <li class='characters'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Gemma%20Styles/works" class="tag">Gemma Styles</a></li> <li class='characters'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Zayn%20Malik/works" class="tag">Zayn Malik</a></li> <li class='characters'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Niall%20Horan/works" class="tag">Niall Horan</a></li> <li class='characters'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Liam%20Payne/works" class="tag">Liam Payne</a></li> <li class='characters'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Stan%20Lucas/works" class="tag">Stan Lucas</a></li> <li class='characters'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Anne%20Cox/works" class="tag">Anne Cox</a></li><li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/freaky%20friday%20AU/works" class="tag">freaky friday AU</a></li> <li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Alternate%20Universe%20-%20High%20School/works" class="tag">Alternate Universe - High School</a></li> <li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Bodyswap/works" class="tag">Bodyswap</a></li> <li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Fluff/works" class="tag">Fluff</a></li> <li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/POV%20Louis/works" class="tag">POV Louis</a></li> <li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/POV%20Harry/works" class="tag">POV Harry</a></li> <li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Stan&#x27;s%20a%20tiny%20bit%20of%20a%20dick%20in%20this%20fair%20warning/works" class="tag">Stan&#x27;s a tiny bit of a dick in this fair warning</a></li> <li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/Pretentious%20Shakespeare%20Title/works" class="tag">Pretentious Shakespeare Title</a></li> <li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/OT5%20is%20Fate/works" class="tag">OT5 is Fate</a></li> <li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/i&#x27;m%20not%20kidding%20about%20the%20fluff/works" class="tag">i&#x27;m not kidding about the fluff</a></li> <li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/only%20a%20tiny%20bit%20of%20angst%20because%20the%20boys%20are%20a%20little%20dumb/works" class="tag">only a tiny bit of angst because the boys are a little dumb</a></li> <li class='freeforms'><a href="http://archiveofourown.org/collections/HL_summerfest/tags/but%20who%20can%20blame%20them%20under%20the%20circumstances/works" class="tag">but who can blame them under the circumstances</a></li>
+  </ul>
+
+  <!--summary-->	
+    <h6 class="landmark heading">Summary</h6>
+    <blockquote class="userstuff summary" title="summary">
+      <p>Freaky Friday High School AU.</p>
+<p>Wherein Harry just wanted to have lunch with his older sister, Cal sells ice cream, Gemma has a test, Anne thinks she knows (she really doesn’t) and Fate plays match maker, because no one puts her ship off course. Louis just tries to help out his best friend's little brother while dealing with a metaphorical butterfly invasion.</p>
+    </blockquote>
+  	
+
+  <!--stats-->
+
+  <dl class="stats" title="stats">
+      <dt>Language:</dt>
+      <dd>English</dd>
+    <dt>Words:</dt>
+    <dd>19,486</dd>
+    <dt>Chapters:</dt>
+    <dd>1/1</dd>
+
+
+    <dt>Collections:</dt>
+    <dd><a href="/works/1949628/collections">1</a></dd>
+
+    <dt>Comments:</dt>
+    <dd><a href="/works/1949628?show_comments=true#comments">15</a></dd>
+    <dt>Kudos:</dt>
+    <dd><a href="/works/1949628#comments">173</a></dd>
+    <dt>Bookmarks:</dt>
+    <dd><a href="/works/1949628/bookmarks">44</a></dd>
+
+    <dt>Hits:</dt>
+    <dd>2290</dd>
+
+  </dl>
+
+
+</li>
+
+  </ol>
+ 
+ <h4 class="landmark heading">Pages Navigation</h4><ol class="pagination actions" role="navigation" title="pagination"><li class="previous" title="previous"><a rel="prev start" href="/works/search?commit=Search&amp;page=1&amp;utf8=%E2%9C%93&amp;work_search%5Bbookmarks_count%5D=&amp;work_search%5Bcharacter_names%5D=&amp;work_search%5Bcomments_count%5D=&amp;work_search%5Bcomplete%5D=1&amp;work_search%5Bcreator%5D=&amp;work_search%5Bfandom_names%5D=One+Direction+%28Band%29&amp;work_search%5Bfreeform_names%5D=&amp;work_search%5Bhits%5D=&amp;work_search%5Bkudos_count%5D=%3E75&amp;work_search%5Blanguage_id%5D=1&amp;work_search%5Bpage%5D=2&amp;work_search%5Bquery%5D=&amp;work_search%5Brating_ids%5D=&amp;work_search%5Brelationship_names%5D=Harry+Styles%2FLouis+Tomlinson&amp;work_search%5Brevised_at%5D=&amp;work_search%5Bshow_restricted%5D=true&amp;work_search%5Bsingle_chapter%5D=0&amp;work_search%5Bsort_column%5D=revised_at&amp;work_search%5Bsort_direction%5D=&amp;work_search%5Btitle%5D=&amp;work_search%5Bword_count%5D=%3E15000">&#8592; Previous</a></li> <li><a rel="prev start" href="/works/search?commit=Search&amp;page=1&amp;utf8=%E2%9C%93&amp;work_search%5Bbookmarks_count%5D=&amp;work_search%5Bcharacter_names%5D=&amp;work_search%5Bcomments_count%5D=&amp;work_search%5Bcomplete%5D=1&amp;work_search%5Bcreator%5D=&amp;work_search%5Bfandom_names%5D=One+Direction+%28Band%29&amp;work_search%5Bfreeform_names%5D=&amp;work_search%5Bhits%5D=&amp;work_search%5Bkudos_count%5D=%3E75&amp;work_search%5Blanguage_id%5D=1&amp;work_search%5Bpage%5D=2&amp;work_search%5Bquery%5D=&amp;work_search%5Brating_ids%5D=&amp;work_search%5Brelationship_names%5D=Harry+Styles%2FLouis+Tomlinson&amp;work_search%5Brevised_at%5D=&amp;work_search%5Bshow_restricted%5D=true&amp;work_search%5Bsingle_chapter%5D=0&amp;work_search%5Bsort_column%5D=revised_at&amp;work_search%5Bsort_direction%5D=&amp;work_search%5Btitle%5D=&amp;work_search%5Bword_count%5D=%3E15000">1</a></li> <li><span class="current">2</span></li> <li><a rel="next" href="/works/search?commit=Search&amp;page=3&amp;utf8=%E2%9C%93&amp;work_search%5Bbookmarks_count%5D=&amp;work_search%5Bcharacter_names%5D=&amp;work_search%5Bcomments_count%5D=&amp;work_search%5Bcomplete%5D=1&amp;work_search%5Bcreator%5D=&amp;work_search%5Bfandom_names%5D=One+Direction+%28Band%29&amp;work_search%5Bfreeform_names%5D=&amp;work_search%5Bhits%5D=&amp;work_search%5Bkudos_count%5D=%3E75&amp;work_search%5Blanguage_id%5D=1&amp;work_search%5Bpage%5D=2&amp;work_search%5Bquery%5D=&amp;work_search%5Brating_ids%5D=&amp;work_search%5Brelationship_names%5D=Harry+Styles%2FLouis+Tomlinson&amp;work_search%5Brevised_at%5D=&amp;work_search%5Bshow_restricted%5D=true&amp;work_search%5Bsingle_chapter%5D=0&amp;work_search%5Bsort_column%5D=revised_at&amp;work_search%5Bsort_direction%5D=&amp;work_search%5Btitle%5D=&amp;work_search%5Bword_count%5D=%3E15000">3</a></li> <li><a href="/works/search?commit=Search&amp;page=4&amp;utf8=%E2%9C%93&amp;work_search%5Bbookmarks_count%5D=&amp;work_search%5Bcharacter_names%5D=&amp;work_search%5Bcomments_count%5D=&amp;work_search%5Bcomplete%5D=1&amp;work_search%5Bcreator%5D=&amp;work_search%5Bfandom_names%5D=One+Direction+%28Band%29&amp;work_search%5Bfreeform_names%5D=&amp;work_search%5Bhits%5D=&amp;work_search%5Bkudos_count%5D=%3E75&amp;work_search%5Blanguage_id%5D=1&amp;work_search%5Bpage%5D=2&amp;work_search%5Bquery%5D=&amp;work_search%5Brating_ids%5D=&amp;work_search%5Brelationship_names%5D=Harry+Styles%2FLouis+Tomlinson&amp;work_search%5Brevised_at%5D=&amp;work_search%5Bshow_restricted%5D=true&amp;work_search%5Bsingle_chapter%5D=0&amp;work_search%5Bsort_column%5D=revised_at&amp;work_search%5Bsort_direction%5D=&amp;work_search%5Btitle%5D=&amp;work_search%5Bword_count%5D=%3E15000">4</a></li> <li><a href="/works/search?commit=Search&amp;page=5&amp;utf8=%E2%9C%93&amp;work_search%5Bbookmarks_count%5D=&amp;work_search%5Bcharacter_names%5D=&amp;work_search%5Bcomments_count%5D=&amp;work_search%5Bcomplete%5D=1&amp;work_search%5Bcreator%5D=&amp;work_search%5Bfandom_names%5D=One+Direction+%28Band%29&amp;work_search%5Bfreeform_names%5D=&amp;work_search%5Bhits%5D=&amp;work_search%5Bkudos_count%5D=%3E75&amp;work_search%5Blanguage_id%5D=1&amp;work_search%5Bpage%5D=2&amp;work_search%5Bquery%5D=&amp;work_search%5Brating_ids%5D=&amp;work_search%5Brelationship_names%5D=Harry+Styles%2FLouis+Tomlinson&amp;work_search%5Brevised_at%5D=&amp;work_search%5Bshow_restricted%5D=true&amp;work_search%5Bsingle_chapter%5D=0&amp;work_search%5Bsort_column%5D=revised_at&amp;work_search%5Bsort_direction%5D=&amp;work_search%5Btitle%5D=&amp;work_search%5Bword_count%5D=%3E15000">5</a></li> <li><a href="/works/search?commit=Search&amp;page=6&amp;utf8=%E2%9C%93&amp;work_search%5Bbookmarks_count%5D=&amp;work_search%5Bcharacter_names%5D=&amp;work_search%5Bcomments_count%5D=&amp;work_search%5Bcomplete%5D=1&amp;work_search%5Bcreator%5D=&amp;work_search%5Bfandom_names%5D=One+Direction+%28Band%29&amp;work_search%5Bfreeform_names%5D=&amp;work_search%5Bhits%5D=&amp;work_search%5Bkudos_count%5D=%3E75&amp;work_search%5Blanguage_id%5D=1&amp;work_search%5Bpage%5D=2&amp;work_search%5Bquery%5D=&amp;work_search%5Brating_ids%5D=&amp;work_search%5Brelationship_names%5D=Harry+Styles%2FLouis+Tomlinson&amp;work_search%5Brevised_at%5D=&amp;work_search%5Bshow_restricted%5D=true&amp;work_search%5Bsingle_chapter%5D=0&amp;work_search%5Bsort_column%5D=revised_at&amp;work_search%5Bsort_direction%5D=&amp;work_search%5Btitle%5D=&amp;work_search%5Bword_count%5D=%3E15000">6</a></li> <li><a href="/works/search?commit=Search&amp;page=7&amp;utf8=%E2%9C%93&amp;work_search%5Bbookmarks_count%5D=&amp;work_search%5Bcharacter_names%5D=&amp;work_search%5Bcomments_count%5D=&amp;work_search%5Bcomplete%5D=1&amp;work_search%5Bcreator%5D=&amp;work_search%5Bfandom_names%5D=One+Direction+%28Band%29&amp;work_search%5Bfreeform_names%5D=&amp;work_search%5Bhits%5D=&amp;work_search%5Bkudos_count%5D=%3E75&amp;work_search%5Blanguage_id%5D=1&amp;work_search%5Bpage%5D=2&amp;work_search%5Bquery%5D=&amp;work_search%5Brating_ids%5D=&amp;work_search%5Brelationship_names%5D=Harry+Styles%2FLouis+Tomlinson&amp;work_search%5Brevised_at%5D=&amp;work_search%5Bshow_restricted%5D=true&amp;work_search%5Bsingle_chapter%5D=0&amp;work_search%5Bsort_column%5D=revised_at&amp;work_search%5Bsort_direction%5D=&amp;work_search%5Btitle%5D=&amp;work_search%5Bword_count%5D=%3E15000">7</a></li> <li><a href="/works/search?commit=Search&amp;page=8&amp;utf8=%E2%9C%93&amp;work_search%5Bbookmarks_count%5D=&amp;work_search%5Bcharacter_names%5D=&amp;work_search%5Bcomments_count%5D=&amp;work_search%5Bcomplete%5D=1&amp;work_search%5Bcreator%5D=&amp;work_search%5Bfandom_names%5D=One+Direction+%28Band%29&amp;work_search%5Bfreeform_names%5D=&amp;work_search%5Bhits%5D=&amp;work_search%5Bkudos_count%5D=%3E75&amp;work_search%5Blanguage_id%5D=1&amp;work_search%5Bpage%5D=2&amp;work_search%5Bquery%5D=&amp;work_search%5Brating_ids%5D=&amp;work_search%5Brelationship_names%5D=Harry+Styles%2FLouis+Tomlinson&amp;work_search%5Brevised_at%5D=&amp;work_search%5Bshow_restricted%5D=true&amp;work_search%5Bsingle_chapter%5D=0&amp;work_search%5Bsort_column%5D=revised_at&amp;work_search%5Bsort_direction%5D=&amp;work_search%5Btitle%5D=&amp;work_search%5Bword_count%5D=%3E15000">8</a></li> <li><a href="/works/search?commit=Search&amp;page=9&amp;utf8=%E2%9C%93&amp;work_search%5Bbookmarks_count%5D=&amp;work_search%5Bcharacter_names%5D=&amp;work_search%5Bcomments_count%5D=&amp;work_search%5Bcomplete%5D=1&amp;work_search%5Bcreator%5D=&amp;work_search%5Bfandom_names%5D=One+Direction+%28Band%29&amp;work_search%5Bfreeform_names%5D=&amp;work_search%5Bhits%5D=&amp;work_search%5Bkudos_count%5D=%3E75&amp;work_search%5Blanguage_id%5D=1&amp;work_search%5Bpage%5D=2&amp;work_search%5Bquery%5D=&amp;work_search%5Brating_ids%5D=&amp;work_search%5Brelationship_names%5D=Harry+Styles%2FLouis+Tomlinson&amp;work_search%5Brevised_at%5D=&amp;work_search%5Bshow_restricted%5D=true&amp;work_search%5Bsingle_chapter%5D=0&amp;work_search%5Bsort_column%5D=revised_at&amp;work_search%5Bsort_direction%5D=&amp;work_search%5Btitle%5D=&amp;work_search%5Bword_count%5D=%3E15000">9</a></li> <li class="gap">…</li> <li><a href="/works/search?commit=Search&amp;page=41&amp;utf8=%E2%9C%93&amp;work_search%5Bbookmarks_count%5D=&amp;work_search%5Bcharacter_names%5D=&amp;work_search%5Bcomments_count%5D=&amp;work_search%5Bcomplete%5D=1&amp;work_search%5Bcreator%5D=&amp;work_search%5Bfandom_names%5D=One+Direction+%28Band%29&amp;work_search%5Bfreeform_names%5D=&amp;work_search%5Bhits%5D=&amp;work_search%5Bkudos_count%5D=%3E75&amp;work_search%5Blanguage_id%5D=1&amp;work_search%5Bpage%5D=2&amp;work_search%5Bquery%5D=&amp;work_search%5Brating_ids%5D=&amp;work_search%5Brelationship_names%5D=Harry+Styles%2FLouis+Tomlinson&amp;work_search%5Brevised_at%5D=&amp;work_search%5Bshow_restricted%5D=true&amp;work_search%5Bsingle_chapter%5D=0&amp;work_search%5Bsort_column%5D=revised_at&amp;work_search%5Bsort_direction%5D=&amp;work_search%5Btitle%5D=&amp;work_search%5Bword_count%5D=%3E15000">41</a></li> <li><a href="/works/search?commit=Search&amp;page=42&amp;utf8=%E2%9C%93&amp;work_search%5Bbookmarks_count%5D=&amp;work_search%5Bcharacter_names%5D=&amp;work_search%5Bcomments_count%5D=&amp;work_search%5Bcomplete%5D=1&amp;work_search%5Bcreator%5D=&amp;work_search%5Bfandom_names%5D=One+Direction+%28Band%29&amp;work_search%5Bfreeform_names%5D=&amp;work_search%5Bhits%5D=&amp;work_search%5Bkudos_count%5D=%3E75&amp;work_search%5Blanguage_id%5D=1&amp;work_search%5Bpage%5D=2&amp;work_search%5Bquery%5D=&amp;work_search%5Brating_ids%5D=&amp;work_search%5Brelationship_names%5D=Harry+Styles%2FLouis+Tomlinson&amp;work_search%5Brevised_at%5D=&amp;work_search%5Bshow_restricted%5D=true&amp;work_search%5Bsingle_chapter%5D=0&amp;work_search%5Bsort_column%5D=revised_at&amp;work_search%5Bsort_direction%5D=&amp;work_search%5Btitle%5D=&amp;work_search%5Bword_count%5D=%3E15000">42</a></li> <li class="next" title="next"><a rel="next" href="/works/search?commit=Search&amp;page=3&amp;utf8=%E2%9C%93&amp;work_search%5Bbookmarks_count%5D=&amp;work_search%5Bcharacter_names%5D=&amp;work_search%5Bcomments_count%5D=&amp;work_search%5Bcomplete%5D=1&amp;work_search%5Bcreator%5D=&amp;work_search%5Bfandom_names%5D=One+Direction+%28Band%29&amp;work_search%5Bfreeform_names%5D=&amp;work_search%5Bhits%5D=&amp;work_search%5Bkudos_count%5D=%3E75&amp;work_search%5Blanguage_id%5D=1&amp;work_search%5Bpage%5D=2&amp;work_search%5Bquery%5D=&amp;work_search%5Brating_ids%5D=&amp;work_search%5Brelationship_names%5D=Harry+Styles%2FLouis+Tomlinson&amp;work_search%5Brevised_at%5D=&amp;work_search%5Bshow_restricted%5D=true&amp;work_search%5Bsingle_chapter%5D=0&amp;work_search%5Bsort_column%5D=revised_at&amp;work_search%5Bsort_direction%5D=&amp;work_search%5Btitle%5D=&amp;work_search%5Bword_count%5D=%3E15000">Next &#8594;</a></li></ol>
+<!--/content-->
+
+          <div class="clear"><!--presentational--></div>
+        </div>
+        <!-- END main -->
+      </div>
+      <!-- BEGIN footer -->
+<div id="footer" role="contentinfo" class="region">
+	<h3 class="landmark heading">Footer</h3>
+  <ul class="navigation actions" role="navigation">
+      <li class="module group">
+        <h4 class="heading">Customize</h4>
+        <ul class="menu">
+          <li aria-haspopup="true">
+            <a href="#">Choose Skin</a>
+            <ul id="skin_chooser" class="expandable secondary">
+              <li><a href="/skins/unset">Default</a></li>
+                <li><a href="/skins/964/set">Blurblings Blurb Drop</a></li>
+                <li><a href="/skins/942/set">Chained Melody</a></li>
+                <li><a href="/skins/891/set">Low Vision Default</a></li>
+                <li><a href="/skins/921/set">One Point Faux</a></li>
+                <li><a href="/skins/890/set">Panda Madness</a></li>
+                <li><a href="/skins/2/set">Plain Text</a></li>
+                <li><a href="/skins/929/set">Reversi</a></li>
+                <li><a href="/skins/882/set">The Screeny Exposure!</a></li>
+            </ul> 
+          </li>
+        </ul>
+      </li>
+    <li class="module group">
+      <h4 class="heading">About the Archive</h4>
+      <ul class="menu">
+        <li><a href="/site_map">Site Map</a></li>
+        <li><a href="/diversity">Diversity Statement</a></li>
+        <li><a href="/tos">Terms of Service</a></li>
+        <li><a href="/dmca">DMCA Policy</a> </li>
+      </ul>
+    </li>
+    <li class="module group">
+      <h4 class="heading">Contact Us</h4>
+      <ul class="menu">
+        <li><a href="/abuse_reports/new">Report Abuse</a></li>
+        <li><a href="/support">Technical Support and Feedback</a></li>
+      </ul>
+    </li>
+    <li class="module group">
+      <h4 class="heading">Development</h4>
+      <ul class="menu">
+          <li><a href="https://github.com/otwcode/otwarchive/commits/v0.9.15.112">otwarchive v0.9.15.112</a></li>
+        <li><a href="/known_issues">Known Issues</a></li>
+        <li><a href="http://creativecommons.org/licenses/GPL/2.0/" title="View License">GPL/CC</a> by the <a href="http://transformativeworks.org/" title="The Organization for Transformative Works">OTW</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<!-- END footer -->
+
+
+    </div>
+    <!-- check to see if this controller/action allow tinymce before we load the gigantor js; see application_helper -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js" type="text/javascript"></script>
+<!-- if user has googleapis blocked for some reason we need a fallback -->
+<script type="text/javascript">
+  if (typeof jQuery == 'undefined') {
+    document.write(unescape("%3Cscript src='/javascripts/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+    document.write(unescape("%3Cscript src='/javascripts/jquery-ui.min.js' type='text/javascript'%3E%3C/script%3E"));
+  }
+</script>
+
+<script type="text/javascript">$j = jQuery.noConflict();</script>
+<script src="/javascripts/jquery.scrollTo.min.js?1406578737" type="text/javascript"></script>
+<script src="/javascripts/jquery.livequery.min.js?1406578737" type="text/javascript"></script>
+<script src="/javascripts/rails.js?1406578737" type="text/javascript"></script>
+<script src="/javascripts/application.js?1406578737" type="text/javascript"></script>
+<script src="/javascripts/bootstrap/bootstrap-dropdown.min.js?1406578737" type="text/javascript"></script>
+<script src="/javascripts/jquery-shuffle.js?1406578737" type="text/javascript"></script>
+<script src="/javascripts/jquery.tokeninput.min.js?1406578737" type="text/javascript"></script>
+<script src="/javascripts/jquery.trap.min.js?1406578737" type="text/javascript"></script>
+<script src="/javascripts/ao3modal.min.js?1406578737" type="text/javascript"></script>
+<script src="/javascripts/jquery.cookie.js?1406578737" type="text/javascript"></script>
+
+
+
+
+  </body>
+</html>
